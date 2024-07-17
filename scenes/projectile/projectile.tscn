@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3henjbsrio4o"]
+
+[ext_resource type="Script" path="res://scenes/projectile/projectile.gd" id="1_rg803"]
+[ext_resource type="Texture2D" uid="uid://b5x0tvcqkpoli" path="res://art/bullet.png" id="2_3j6eo"]
+[ext_resource type="Script" path="res://scenes/hitbox/hitbox_data.gd" id="3_qhypv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wiad0"]
+radius = 2.23607
+
+[node name="Projectile" type="Area2D" node_paths=PackedStringArray("hitbox_data")]
+script = ExtResource("1_rg803")
+hitbox_data = NodePath("HitboxData")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_3j6eo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wiad0")
+
+[node name="HitboxData" type="Node" parent="."]
+script = ExtResource("3_qhypv")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
