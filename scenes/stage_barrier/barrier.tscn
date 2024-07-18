@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://dc7lx67er6l06"]
+
+[ext_resource type="Texture2D" uid="uid://calm226i0h3bn" path="res://art/barrier.png" id="1_y2td7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phrsa"]
+size = Vector2(1366, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xbngu"]
+size = Vector2(1366, 46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x2i6b"]
+size = Vector2(52, 768)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j74rb"]
+size = Vector2(52, 768)
+
+[node name="Barrier" type="StaticBody2D"]
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(683, 384)
+texture = ExtResource("1_y2td7")
+
+[node name="Top" type="CollisionShape2D" parent="."]
+position = Vector2(683, 21)
+shape = SubResource("RectangleShape2D_phrsa")
+
+[node name="Bottom" type="CollisionShape2D" parent="."]
+position = Vector2(683, 745)
+shape = SubResource("RectangleShape2D_xbngu")
+
+[node name="Left" type="CollisionShape2D" parent="."]
+position = Vector2(26, 384)
+shape = SubResource("RectangleShape2D_x2i6b")
+
+[node name="Right" type="CollisionShape2D" parent="."]
+position = Vector2(1340, 384)
+shape = SubResource("RectangleShape2D_j74rb")
