@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dc7lx67er6l06"]
+[gd_scene load_steps=9 format=3 uid="uid://dc7lx67er6l06"]
 
 [ext_resource type="Texture2D" uid="uid://calm226i0h3bn" path="res://art/barrier.png" id="1_y2td7"]
+[ext_resource type="Script" path="res://scenes/stage_barrier/spawner.gd" id="2_d0q51"]
+[ext_resource type="PackedScene" uid="uid://ca6023cmew22i" path="res://scenes/enemy/enemy.tscn" id="3_e7iby"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phrsa"]
 size = Vector2(1366, 42)
@@ -13,6 +15,12 @@ size = Vector2(52, 768)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j74rb"]
 size = Vector2(52, 768)
+
+[sub_resource type="Curve2D" id="Curve2D_3f3hp"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 24, 24, 0, 0, 0, 0, 1336, 24, 0, 0, 0, 0, 1336, 744, 0, 0, 0, 0, 24, 744, 0, 0, 0, 0, 24, 24)
+}
+point_count = 5
 
 [node name="Barrier" type="StaticBody2D"]
 collision_mask = 0
@@ -36,3 +44,18 @@ shape = SubResource("RectangleShape2D_x2i6b")
 [node name="Right" type="CollisionShape2D" parent="."]
 position = Vector2(1340, 384)
 shape = SubResource("RectangleShape2D_j74rb")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_3f3hp")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(24, 24)
+
+[node name="Spawner" type="Node" parent="." node_paths=PackedStringArray("spawnLocation", "spawnTimer")]
+script = ExtResource("2_d0q51")
+enemyScene = ExtResource("3_e7iby")
+spawnLocation = NodePath("../Path2D/PathFollow2D")
+spawnTimer = NodePath("../SpawnTimer")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+autostart = true
