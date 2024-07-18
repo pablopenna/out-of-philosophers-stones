@@ -1,6 +1,10 @@
 class_name Player extends Entity
 
-@export var move_speed: int
+const move_speed: int = 300
+@export var animation_player: AnimationPlayer
+
+func _ready() -> void:
+	animation_player.play("Player/idle")
 
 func _physics_process(delta: float) -> void:
 	velocity = Vector2(
