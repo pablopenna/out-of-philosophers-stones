@@ -19,7 +19,7 @@ func _spawn() -> void:
 	var direction: float = spawnLocation.rotation + PI / 2
 	# Add some randomness to the direction.
 	direction += randf_range(-PI / 4, PI / 4)
-	enemy.rotation = direction
+	# enemy.rotation = direction
 	
 	
 	# Choose the velocity for the enemy.
