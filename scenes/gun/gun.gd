@@ -5,6 +5,7 @@ extends Node2D
 @export var bullet_damage: int = 1
 @export var bullet_creation_point: Node2D
 @export_flags_2d_physics var projectile_scanned_layer: int
+@export var sprite: Sprite2D
 
 func _ready() -> void:
 	projectile_shooter.projectile_scanned_layer = projectile_scanned_layer
@@ -19,6 +20,11 @@ func _rotate_to_face_mouse() -> void:
 	var rotation_to_mouse: float = global_position.angle_to_point(mouse_position)
 	
 	rotation = rotation_to_mouse
+	
+	if abs(rotation_degrees) > 90:
+		sprite.flip_v = true
+	else:
+		sprite.flip_v = false
 
 func _shoot() -> void:
 	var mouse_position: Vector2 = get_global_mouse_position()

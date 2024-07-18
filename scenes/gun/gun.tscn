@@ -4,11 +4,12 @@
 [ext_resource type="Script" path="res://scenes/gun/gun.gd" id="1_u7sx3"]
 [ext_resource type="PackedScene" uid="uid://b8yls0byl10aq" path="res://scenes/projectile/projectile_shooter.tscn" id="3_mr34k"]
 
-[node name="Gun" type="Node2D" node_paths=PackedStringArray("projectile_shooter", "bullet_creation_point")]
+[node name="Gun" type="Node2D" node_paths=PackedStringArray("projectile_shooter", "bullet_creation_point", "sprite")]
 script = ExtResource("1_u7sx3")
 projectile_shooter = NodePath("ProjectileShooter")
 bullet_speed = 500
 bullet_creation_point = NodePath("BulletCreationPoint")
+sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(25, 2)

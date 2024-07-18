@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://ca6023cmew22i"]
 
 [ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_ia8fh"]
-[ext_resource type="Texture2D" uid="uid://d3wr5koavnkxf" path="res://art/enemy.png" id="2_7lc48"]
+[ext_resource type="Texture2D" uid="uid://byjnrfygc86ly" path="res://art/enemy_white_outline.png" id="2_8b7d0"]
 [ext_resource type="Script" path="res://scenes/common/state_manager.gd" id="3_slk6d"]
 [ext_resource type="Script" path="res://scenes/enemy/states/idle.gd" id="4_374nb"]
 [ext_resource type="PackedScene" uid="uid://bvhpvjcuqvn16" path="res://scenes/hurtbox/hurtbox.tscn" id="5_qtfyk"]
@@ -47,7 +47,7 @@ position = Vector2(-1, 2.5)
 shape = SubResource("RectangleShape2D_nhs8a")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_7lc48")
+texture = ExtResource("2_8b7d0")
 hframes = 5
 frame = 4
 
