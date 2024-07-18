@@ -31,7 +31,11 @@ func disable() -> void:
 	
 func _on_hurtbox_entered(hurtbox: Hurtbox) -> void:
 	hit.emit()
+	_on_hit(hurtbox, hitbox_data)
 	hurtbox.receiveDamage(hitbox_data)
+
+func _on_hit(hurtbox: Hurtbox, hitbox_data: HitboxData):
+	pass
 	
 func _flip_horizontally_if_entity_facing_left() -> void:
 	if entity_to_track.facing_direction == Vector2.LEFT:

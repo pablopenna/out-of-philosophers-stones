@@ -30,6 +30,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animation_player")]
+collision_layer = 2
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_qd4n7")
@@ -49,3 +50,4 @@ libraries = {
 }
 
 [node name="Gun" parent="." instance=ExtResource("3_pra16")]
+projectile_scanned_layer = 128
