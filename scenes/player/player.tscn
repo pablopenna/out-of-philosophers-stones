@@ -1,11 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://p143u0yu7cua"]
+[gd_scene load_steps=9 format=3 uid="uid://p143u0yu7cua"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_qd4n7"]
+[ext_resource type="Shader" path="res://scenes/player/bullet_proximity.gdshader" id="2_3cy15"]
 [ext_resource type="Texture2D" uid="uid://b3ud6cvdh6bu4" path="res://art/player.png" id="2_si4qa"]
 [ext_resource type="PackedScene" uid="uid://bf8w8c0v5afmv" path="res://scenes/gun/gun.tscn" id="3_pra16"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p6e2r"]
 size = Vector2(17, 17)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8se75"]
+shader = ExtResource("2_3cy15")
+shader_parameter/intensity = 1.0
 
 [sub_resource type="Animation" id="Animation_4vq8p"]
 resource_name = "idle"
@@ -41,6 +46,7 @@ position = Vector2(-0.5, 4.5)
 shape = SubResource("RectangleShape2D_p6e2r")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_8se75")
 texture = ExtResource("2_si4qa")
 hframes = 3
 
