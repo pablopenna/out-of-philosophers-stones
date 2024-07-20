@@ -5,10 +5,12 @@ extends Node2D
 @export var bullet_damage: int = 1
 @export var bullet_creation_point: Node2D
 @export_flags_2d_physics var projectile_scanned_layer: int
+@export_flags_2d_physics var projectile_layer: int
 @export var sprite: Sprite2D
 
 func _ready() -> void:
 	projectile_shooter.projectile_scanned_layer = projectile_scanned_layer
+	projectile_shooter.projectile_layer = projectile_layer
 
 func _process(_delta: float) -> void:
 	_rotate_to_face_mouse()

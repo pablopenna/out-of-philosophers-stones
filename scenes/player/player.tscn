@@ -1,16 +1,23 @@
-[gd_scene load_steps=9 format=3 uid="uid://p143u0yu7cua"]
+[gd_scene load_steps=19 format=3 uid="uid://p143u0yu7cua"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_qd4n7"]
-[ext_resource type="Shader" path="res://scenes/player/bullet_proximity.gdshader" id="2_3cy15"]
 [ext_resource type="Texture2D" uid="uid://b3ud6cvdh6bu4" path="res://art/player.png" id="2_si4qa"]
+[ext_resource type="Shader" path="res://shaders/white_filter.gdshader" id="2_vesn5"]
 [ext_resource type="PackedScene" uid="uid://bf8w8c0v5afmv" path="res://scenes/gun/gun.tscn" id="3_pra16"]
+[ext_resource type="PackedScene" uid="uid://bvhpvjcuqvn16" path="res://scenes/hurtbox/hurtbox.tscn" id="5_qrsrk"]
+[ext_resource type="PackedScene" uid="uid://bivwencvg08tj" path="res://scenes/hp_manager/health_points_manager.tscn" id="6_v44fv"]
+[ext_resource type="AudioStream" uid="uid://ckbfps33bo0ss" path="res://sfx/damage.ogg" id="7_rr7gj"]
+[ext_resource type="Script" path="res://scenes/player/hurt_sound_player.gd" id="8_3qskg"]
+[ext_resource type="Shader" path="res://shaders/transparent.gdshader" id="9_fj5c6"]
+[ext_resource type="Texture2D" uid="uid://b2xicndr3vl6n" path="res://art/player_heart.png" id="9_lairw"]
+[ext_resource type="Script" path="res://scenes/player/BulletProximityEffect.gd" id="11_huqqd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p6e2r"]
 size = Vector2(17, 17)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8se75"]
-shader = ExtResource("2_3cy15")
-shader_parameter/intensity = 1.0
+shader = ExtResource("2_vesn5")
+shader_parameter/intensity = 0.0
 
 [sub_resource type="Animation" id="Animation_4vq8p"]
 resource_name = "idle"
@@ -33,6 +40,16 @@ tracks/0/keys = {
 _data = {
 "idle": SubResource("Animation_4vq8p")
 }
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wlbpc"]
+radius = 2.23607
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y2t3m"]
+shader = ExtResource("9_fj5c6")
+shader_parameter/intensity = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gtw83"]
+radius = 30.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animation_player")]
 collision_layer = 2
@@ -57,3 +74,37 @@ libraries = {
 
 [node name="Gun" parent="." instance=ExtResource("3_pra16")]
 projectile_scanned_layer = 128
+projectile_layer = 16
+
+[node name="Hurtbox" parent="." instance=ExtResource("5_qrsrk")]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(1, 3)
+shape = SubResource("CircleShape2D_wlbpc")
+
+[node name="HealthPointsManager" parent="." node_paths=PackedStringArray("hurtbox") instance=ExtResource("6_v44fv")]
+hurtbox = NodePath("../Hurtbox")
+health = 5
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_rr7gj")
+script = ExtResource("8_3qskg")
+
+[node name="Heart" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_y2t3m")
+position = Vector2(1, 3)
+texture = ExtResource("9_lairw")
+
+[node name="BulletProximityEffect" type="Area2D" parent="." node_paths=PackedStringArray("sprites_to_provide_param_to_shader")]
+collision_layer = 0
+collision_mask = 64
+script = ExtResource("11_huqqd")
+sprites_to_provide_param_to_shader = [NodePath("../Sprite2D"), NodePath("../Heart")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletProximityEffect"]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_gtw83")
+
+[connection signal="health_decreased" from="HealthPointsManager" to="HurtSound" method="_on_health_points_manager_health_decreased"]
