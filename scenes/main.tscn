@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgr1cp3u4fqks"]
+[gd_scene load_steps=7 format=3 uid="uid://cgr1cp3u4fqks"]
 
 [ext_resource type="PackedScene" uid="uid://p143u0yu7cua" path="res://scenes/player/player.tscn" id="1_6ulhn"]
 [ext_resource type="Texture2D" uid="uid://b565nqi88eb6f" path="res://art/background.png" id="1_q7itl"]
 [ext_resource type="PackedScene" uid="uid://ca6023cmew22i" path="res://scenes/enemy/enemy.tscn" id="2_jxpoc"]
 [ext_resource type="PackedScene" uid="uid://dc7lx67er6l06" path="res://scenes/stage_barrier/barrier.tscn" id="4_qa7m2"]
+[ext_resource type="Script" path="res://scenes/destroy_anything_outside.gd" id="5_8lrmf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1glpr"]
+size = Vector2(1386, 789)
 
 [node name="Main" type="Node2D"]
 
@@ -20,3 +24,12 @@ position = Vector2(579, 316)
 position = Vector2(101, 96)
 
 [node name="ProjectileContainer" type="Node" parent="." groups=["ProjectileContainer"]]
+
+[node name="DestroyAnythingOutside" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 92
+script = ExtResource("5_8lrmf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DestroyAnythingOutside"]
+position = Vector2(683, 384.5)
+shape = SubResource("RectangleShape2D_1glpr")
