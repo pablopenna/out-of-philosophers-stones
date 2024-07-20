@@ -1,11 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://ca6023cmew22i"]
+[gd_scene load_steps=14 format=3 uid="uid://ca6023cmew22i"]
 
 [ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_ia8fh"]
 [ext_resource type="Texture2D" uid="uid://byjnrfygc86ly" path="res://art/enemy_white_outline.png" id="2_8b7d0"]
 [ext_resource type="Script" path="res://scenes/common/state_manager.gd" id="3_slk6d"]
 [ext_resource type="Script" path="res://scenes/enemy/states/idle.gd" id="4_374nb"]
+[ext_resource type="Script" path="res://scenes/enemy/states/shoot.gd" id="5_fgmeb"]
 [ext_resource type="PackedScene" uid="uid://bvhpvjcuqvn16" path="res://scenes/hurtbox/hurtbox.tscn" id="5_qtfyk"]
 [ext_resource type="PackedScene" uid="uid://bivwencvg08tj" path="res://scenes/hp_manager/health_points_manager.tscn" id="6_o5h45"]
+[ext_resource type="PackedScene" uid="uid://b8yls0byl10aq" path="res://scenes/projectile/projectile_shooter.tscn" id="7_q66ql"]
+[ext_resource type="Script" path="res://scenes/enemy/pattern_shooter.gd" id="8_hgaiu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nhs8a"]
 size = Vector2(22, 25)
@@ -59,11 +62,19 @@ libraries = {
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "managed_entity")]
 script = ExtResource("3_slk6d")
-initial_state = NodePath("Idle")
+initial_state = NodePath("Shoot")
 managed_entity = NodePath("..")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("4_374nb")
+
+[node name="Shoot" type="Node" parent="StateMachine" node_paths=PackedStringArray("pattern_shooter", "timer")]
+script = ExtResource("5_fgmeb")
+pattern_shooter = NodePath("../../PatternShooter")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="StateMachine/Shoot"]
+autostart = true
 
 [node name="Hurtbox" parent="." instance=ExtResource("5_qtfyk")]
 collision_layer = 128
@@ -76,3 +87,11 @@ shape = SubResource("CircleShape2D_dpagm")
 [node name="HealthPointsManager" parent="." node_paths=PackedStringArray("hurtbox") instance=ExtResource("6_o5h45")]
 hurtbox = NodePath("../Hurtbox")
 health = 5
+
+[node name="ProjectileShooter" parent="." instance=ExtResource("7_q66ql")]
+projectile_scanned_layer = 32
+projectile_layer = 64
+
+[node name="PatternShooter" type="Node2D" parent="." node_paths=PackedStringArray("projectileShooter")]
+script = ExtResource("8_hgaiu")
+projectileShooter = NodePath("../ProjectileShooter")

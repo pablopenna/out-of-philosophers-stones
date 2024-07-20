@@ -1,7 +1,8 @@
 class_name ProjectileShooter extends Node2D
 
 @export var projectileScene: PackedScene
-var projectile_scanned_layer: int
+@export_flags_2d_physics var projectile_scanned_layer: int
+@export_flags_2d_physics var projectile_layer: int
 	
 func shoot(
 	initial_position: Vector2,
@@ -11,7 +12,7 @@ func shoot(
 ) -> void:
 	var projectile: Projectile = projectileScene.instantiate()
 	
-	# projectile.collision_layer = projectile_layer
+	projectile.collision_layer = self.projectile_layer
 	projectile.collision_mask = self.projectile_scanned_layer
 	projectile.direction = direction
 	projectile.speed = speed
