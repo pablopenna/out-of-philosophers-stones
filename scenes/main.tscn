@@ -18,3 +18,5 @@ position = Vector2(579, 316)
 
 [node name="Enemy" parent="." instance=ExtResource("2_jxpoc")]
 position = Vector2(101, 96)
+
+[node name="ProjectileContainer" type="Node" parent="." groups=["ProjectileContainer"]]
