@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ca6023cmew22i"]
+[gd_scene load_steps=15 format=3 uid="uid://ca6023cmew22i"]
 
 [ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_ia8fh"]
 [ext_resource type="Texture2D" uid="uid://byjnrfygc86ly" path="res://art/enemy_white_outline.png" id="2_8b7d0"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bivwencvg08tj" path="res://scenes/hp_manager/health_points_manager.tscn" id="6_o5h45"]
 [ext_resource type="PackedScene" uid="uid://b8yls0byl10aq" path="res://scenes/projectile/projectile_shooter.tscn" id="7_q66ql"]
 [ext_resource type="Script" path="res://scenes/enemy/pattern_shooter.gd" id="8_hgaiu"]
+[ext_resource type="PackedScene" uid="uid://cegd3hhiafncc" path="res://scenes/alchemy_ingredient/ingredient_factory.tscn" id="10_wi14e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nhs8a"]
 size = Vector2(22, 25)
@@ -37,7 +38,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_dpagm"]
 radius = 16.0312
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("animation_player", "hp_manager")]
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("animation_player", "hp_manager", "ingredient_factory")]
 collision_layer = 4
 collision_mask = 0
 motion_mode = 1
@@ -45,6 +46,7 @@ wall_min_slide_angle = 0.0
 script = ExtResource("1_ia8fh")
 animation_player = NodePath("AnimationPlayer")
 hp_manager = NodePath("HealthPointsManager")
+ingredient_factory = NodePath("IngredientFactory")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 2.5)
@@ -95,3 +97,5 @@ projectile_layer = 64
 [node name="PatternShooter" type="Node2D" parent="." node_paths=PackedStringArray("projectileShooter")]
 script = ExtResource("8_hgaiu")
 projectileShooter = NodePath("../ProjectileShooter")
+
+[node name="IngredientFactory" parent="." instance=ExtResource("10_wi14e")]

@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cegd3hhiafncc"]
+[gd_scene load_steps=3 format=3 uid="uid://cegd3hhiafncc"]
 
 [ext_resource type="Script" path="res://scenes/alchemy_ingredient/ingredient_factory.gd" id="1_jbn68"]
+[ext_resource type="PackedScene" uid="uid://desj31vcxej0a" path="res://scenes/alchemy_ingredient/alchemy_ingredient.tscn" id="2_jk1np"]
 
 [node name="IngredientFactory" type="Node2D"]
 script = ExtResource("1_jbn68")
+ingredientScene = ExtResource("2_jk1np")
