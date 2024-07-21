@@ -5,5 +5,4 @@ func _ready() -> void:
 	self.body_exited.connect(_destroy)
 
 func _destroy(node: Node) -> void:
-	print("destroying ", node)
 	node.queue_free()

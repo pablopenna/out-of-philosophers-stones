@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://p143u0yu7cua"]
+[gd_scene load_steps=21 format=3 uid="uid://p143u0yu7cua"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_qd4n7"]
 [ext_resource type="Texture2D" uid="uid://b3ud6cvdh6bu4" path="res://art/player.png" id="2_si4qa"]
@@ -11,6 +11,7 @@
 [ext_resource type="Shader" path="res://shaders/transparent.gdshader" id="9_fj5c6"]
 [ext_resource type="Texture2D" uid="uid://b2xicndr3vl6n" path="res://art/player_heart.png" id="9_lairw"]
 [ext_resource type="Script" path="res://scenes/player/BulletProximityEffect.gd" id="11_huqqd"]
+[ext_resource type="PackedScene" uid="uid://8efnrqtax03l" path="res://scenes/alchemy_ingredient/ingredient_stash.tscn" id="12_uvbsl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p6e2r"]
 size = Vector2(17, 17)
@@ -50,6 +51,9 @@ shader_parameter/intensity = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gtw83"]
 radius = 30.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vfm5v"]
+radius = 18.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animation_player", "hp_manager")]
 collision_layer = 2
@@ -107,5 +111,11 @@ sprites_to_provide_param_to_shader = [NodePath("../Sprite2D"), NodePath("../Hear
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BulletProximityEffect"]
 position = Vector2(-1, 0)
 shape = SubResource("CircleShape2D_gtw83")
+
+[node name="IngredientStash" parent="." instance=ExtResource("12_uvbsl")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IngredientStash"]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_vfm5v")
 
 [connection signal="health_decreased" from="HealthPointsManager" to="HurtSound" method="_on_health_points_manager_health_decreased"]
