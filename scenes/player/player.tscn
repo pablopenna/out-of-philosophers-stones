@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bf8w8c0v5afmv" path="res://scenes/gun/gun.tscn" id="3_pra16"]
 [ext_resource type="PackedScene" uid="uid://bvhpvjcuqvn16" path="res://scenes/hurtbox/hurtbox.tscn" id="5_qrsrk"]
 [ext_resource type="PackedScene" uid="uid://bivwencvg08tj" path="res://scenes/hp_manager/health_points_manager.tscn" id="6_v44fv"]
-[ext_resource type="AudioStream" uid="uid://ckbfps33bo0ss" path="res://sfx/damage.ogg" id="7_rr7gj"]
+[ext_resource type="AudioStream" uid="uid://ckbfps33bo0ss" path="res://sounds/damage.ogg" id="7_rr7gj"]
 [ext_resource type="Script" path="res://scenes/player/hurt_sound_player.gd" id="8_3qskg"]
 [ext_resource type="Shader" path="res://shaders/transparent.gdshader" id="9_fj5c6"]
 [ext_resource type="Texture2D" uid="uid://b2xicndr3vl6n" path="res://art/player_heart.png" id="9_lairw"]
