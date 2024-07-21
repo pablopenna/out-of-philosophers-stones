@@ -23,7 +23,7 @@ func _spawn() -> void:
 	
 	
 	# Choose the velocity for the enemy.
-	var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
+	var velocity: Vector2 = Vector2(randf_range(150.0, 250.0), 0.0)
 	enemy.velocity = velocity.rotated(direction)
 	
 	add_child(enemy)

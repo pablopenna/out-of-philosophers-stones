@@ -11,7 +11,7 @@ func _ready() -> void:
 	hitbox_data = HitboxData.new()
 	hitbox_data.damage = damage
 
-func _process(delta) -> void:
+func _process(delta: float) -> void:
 	position += direction * speed * delta
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:

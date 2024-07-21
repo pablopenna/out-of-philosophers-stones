@@ -51,12 +51,13 @@ shader_parameter/intensity = 0.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_gtw83"]
 radius = 30.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animation_player")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animation_player", "hp_manager")]
 collision_layer = 2
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_qd4n7")
 animation_player = NodePath("AnimationPlayer")
+hp_manager = NodePath("HealthPointsManager")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 4.5)
@@ -86,7 +87,7 @@ shape = SubResource("CircleShape2D_wlbpc")
 
 [node name="HealthPointsManager" parent="." node_paths=PackedStringArray("hurtbox") instance=ExtResource("6_v44fv")]
 hurtbox = NodePath("../Hurtbox")
-health = 5
+health = 3
 
 [node name="HurtSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_rr7gj")

@@ -10,13 +10,13 @@ func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 	# hitbox_data = find_children("*", "HitboxData")[0]
 	
-func _process(_delta) -> void:
+func _process(_delta: float) -> void:
 	if entity_to_track:
 		_flip_horizontally_if_entity_facing_left()
 		_set_position_relative_to_entity()
 	
 func _on_area_entered(area: Area2D) -> void:
-	var hurtbox = area as Hurtbox # Casting returns null if cannot convert to type
+	var hurtbox: Hurtbox = area as Hurtbox # Casting returns null if cannot convert to type
 	if hurtbox == null:
 		return	
 	_on_hurtbox_entered(hurtbox)
@@ -34,7 +34,7 @@ func _on_hurtbox_entered(hurtbox: Hurtbox) -> void:
 	_on_hit(hurtbox, hitbox_data)
 	hurtbox.receiveDamage(hitbox_data)
 
-func _on_hit(hurtbox: Hurtbox, hitbox_data: HitboxData):
+func _on_hit(hurtbox: Hurtbox, hitbox_data: HitboxData) -> void:
 	pass
 	
 func _flip_horizontally_if_entity_facing_left() -> void:

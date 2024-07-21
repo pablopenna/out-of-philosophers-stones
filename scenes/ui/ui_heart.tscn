@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqk5kvhnr3qb2"]
+
+[ext_resource type="Texture2D" uid="uid://b2xicndr3vl6n" path="res://art/player_heart.png" id="1_0yjuv"]
+
+[node name="UIHeart" type="TextureRect"]
+custom_minimum_size = Vector2(64, 64)
+texture = ExtResource("1_0yjuv")
