@@ -35,6 +35,8 @@ position = Vector2(101, 96)
 
 [node name="ProjectileContainer" type="Node" parent="." groups=["ProjectileContainer"]]
 
+[node name="IngredientContainer" type="Node" parent="." groups=["IngredientContainer"]]
+
 [node name="DestroyAnythingOutside" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 92
