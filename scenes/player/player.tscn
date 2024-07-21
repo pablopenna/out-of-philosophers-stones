@@ -92,8 +92,6 @@ health = 3
 [node name="HurtSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_rr7gj")
 script = ExtResource("8_3qskg")
-max_pitch = 2.0
-min_pitch = 0.5
 
 [node name="Heart" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_y2t3m")
