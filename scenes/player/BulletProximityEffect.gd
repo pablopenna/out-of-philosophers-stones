@@ -5,7 +5,7 @@ var MAX_DISTANCE: float
 var MIN_DISTANCE: float
 
 @export var sprites_to_provide_param_to_shader: Array[Sprite2D]
-const shader_param_name = "intensity"
+const shader_param_name: StringName = "intensity"
 
 func _ready() -> void:
 	self.area_entered.connect(_on_bullet_entered)
@@ -13,9 +13,9 @@ func _ready() -> void:
 	MAX_DISTANCE = (($CollisionShape2D as CollisionShape2D).shape as CircleShape2D).radius
 	MIN_DISTANCE = 0
 	
-func _process(delta) -> void:
-	var closest_distance = _calculate_distance_to_closest_bullet()
-	var value_for_shaders = _magic_value_between_0_and_1(closest_distance)
+func _process(_delta: float) -> void:
+	var closest_distance: float = _calculate_distance_to_closest_bullet()
+	var value_for_shaders: float = _magic_value_between_0_and_1(closest_distance)
 	_provide_param_to_sprite_shaders(value_for_shaders)
 	
 	#print("MAX ", MAX_DISTANCE)
@@ -36,7 +36,7 @@ func _calculate_distance_to_closest_bullet() -> float:
 	for bullet: Area2D in tracked_bullets:
 		if bullet == null: 
 			continue
-		var distance_to_bullet = _distance_to_bullet(bullet)
+		var distance_to_bullet: float = _distance_to_bullet(bullet)
 		if distance_to_bullet < distance_to_closest_bullet:
 			distance_to_closest_bullet = distance_to_bullet
 	return distance_to_closest_bullet
