@@ -16,6 +16,11 @@ config/features=PackedStringArray("4.2", "GL Compatibility")
 run/max_fps=60
 config/icon="res://art/cover_small.png"
 
+[autoload]
+
+GameStateManager="*res://scenes/game_state/game_state_manager.gd"
+GlobalEvents="*res://scenes/global_events.gd"
+
 [debug]
 
 gdscript/warnings/untyped_declaration=1

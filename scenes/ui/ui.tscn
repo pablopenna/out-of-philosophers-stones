@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bb1aihwwoqf1r"]
+[gd_scene load_steps=5 format=3 uid="uid://bb1aihwwoqf1r"]
 
 [ext_resource type="LabelSettings" uid="uid://db1a0y17bcjrj" path="res://scenes/ui/LabelSettings.tres" id="1_q834k"]
+[ext_resource type="Script" path="res://scenes/ui/show_score.gd" id="2_3j8mj"]
 [ext_resource type="Texture2D" uid="uid://b2xicndr3vl6n" path="res://art/player_heart.png" id="2_d6k52"]
 [ext_resource type="Texture2D" uid="uid://b5unr7ij1yqrf" path="res://art/flask2.png" id="3_0txa0"]
 
@@ -50,6 +51,7 @@ layout_mode = 2
 text = "0
 "
 label_settings = ExtResource("1_q834k")
+script = ExtResource("2_3j8mj")
 
 [node name="LifeContainer" type="HBoxContainer" parent="Control/MarginContainer/Top"]
 layout_mode = 2

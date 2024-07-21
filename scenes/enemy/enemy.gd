@@ -12,4 +12,6 @@ func _ready() -> void:
 
 func _on_died() -> void:
 	died.emit()
+	GlobalEvents.enemy_killed.emit()
+	
 	queue_free()
