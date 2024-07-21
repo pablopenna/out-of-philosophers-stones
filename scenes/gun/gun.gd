@@ -30,5 +30,5 @@ func _rotate_to_face_mouse() -> void:
 
 func _shoot() -> void:
 	var mouse_position: Vector2 = get_global_mouse_position()
-	var direction_to_mouse: Vector2 = bullet_creation_point.global_position.direction_to(mouse_position)
+	var direction_to_mouse: Vector2 = global_position.direction_to(mouse_position)
 	projectile_shooter.shoot(bullet_creation_point.global_position, direction_to_mouse, bullet_speed, bullet_damage)
