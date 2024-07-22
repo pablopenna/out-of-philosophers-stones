@@ -16,8 +16,12 @@ func toss(ingredientType: AlchemyIngredient.IngredientType) -> bool:
 	if not _has_remaining_ingredients_of_type(ingredientType):
 		return false
 	_stash[ingredientType] -= 1
-	var ingredient: AlchemyIngredient = ingredient_factory.create_ingredient(ingredientType)	
-	AddToTreeUtils.add_ingredient_to_tree(ingredient)
+	var ingredient: TossedAlchemyIngredient = ingredient_factory.create_tossed_ingredient(ingredientType)
+	
+	# ingredient.global_position = global_position
+	# AddToTreeUtils.add_ingredient_to_tree(ingredient)
+	add_child(ingredient) # Make tossed ingredients follow the "tosser"
+	
 	return true
 
 func _has_remaining_ingredients_of_type(ingredientType: AlchemyIngredient.IngredientType) -> bool:

@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://scenes/camera.gd" id="6_u2mrc"]
 [ext_resource type="PackedScene" uid="uid://bb1aihwwoqf1r" path="res://scenes/ui/ui.tscn" id="7_j1fju"]
 [ext_resource type="Script" path="res://scenes/game_state/in-game-timer.gd" id="8_c2735"]
-[ext_resource type="PackedScene" uid="uid://desj31vcxej0a" path="res://scenes/alchemy_ingredient/alchemy_ingredient.tscn" id="9_77xp5"]
+[ext_resource type="PackedScene" uid="uid://desj31vcxej0a" path="res://scenes/alchemy_ingredient/base/alchemy_ingredient.tscn" id="9_77xp5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1glpr"]
 size = Vector2(1386, 789)

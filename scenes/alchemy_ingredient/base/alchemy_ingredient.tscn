@@ -1,0 +1,53 @@
+[gd_scene load_steps=11 format=3 uid="uid://desj31vcxej0a"]
+
+[ext_resource type="Script" path="res://scenes/alchemy_ingredient/base/alchemy_ingredient.gd" id="1_pwqlp"]
+[ext_resource type="Texture2D" uid="uid://es7bxu6grpjc" path="res://art/hand.png" id="2_m0qan"]
+[ext_resource type="Script" path="res://scenes/alchemy_ingredient/ingredient_sprite.gd" id="3_qux8y"]
+[ext_resource type="Texture2D" uid="uid://cp4hv08ewgh08" path="res://art/eye.png" id="4_snthl"]
+[ext_resource type="Texture2D" uid="uid://dios16sab1e1w" path="res://art/bone.png" id="5_0v43d"]
+[ext_resource type="Texture2D" uid="uid://coya7pamyoa8y" path="res://art/sprinkle.png" id="6_hq1d7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7c0uh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iliif"]
+atlas = ExtResource("6_hq1d7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e436x"]
+atlas = ExtResource("6_hq1d7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_odtt8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iliif")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e436x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Ingredient" type="Area2D"]
+collision_layer = 256
+collision_mask = 0
+script = ExtResource("1_pwqlp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7c0uh")
+
+[node name="IngredientSprite" type="Sprite2D" parent="." node_paths=PackedStringArray("ingredient")]
+texture = ExtResource("2_m0qan")
+script = ExtResource("3_qux8y")
+ingredient = NodePath("..")
+hand_texture = ExtResource("2_m0qan")
+eye_texture = ExtResource("4_snthl")
+bone_texture = ExtResource("5_0v43d")
+
+[node name="Sprinkle" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_odtt8")
+autoplay = "default"
+frame_progress = 0.155506

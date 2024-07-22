@@ -100,6 +100,7 @@ toss_eye={
 2d_physics/layer_7="enemy_hitbox"
 2d_physics/layer_8="enemy_hurtbox"
 2d_physics/layer_9="alchemy_ingredient"
+2d_physics/layer_10="tossed_ingredient"
 
 [rendering]
 

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1ri6r0h0r8bl"]
+
+[ext_resource type="Script" path="res://scenes/alchemy_ingredient/tossed/tossed_ingredient.gd" id="1_4i13v"]
+[ext_resource type="PackedScene" uid="uid://dft5ckobwmi1e" path="res://scenes/alchemy_ingredient/ingredient_sprite.tscn" id="2_73i6a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7awbs"]
+
+[node name="TossedIngredient" type="Area2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_4i13v")
+sprite = NodePath("IngredientSprite")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7awbs")
+
+[node name="IngredientSprite" parent="." node_paths=PackedStringArray("ingredient") instance=ExtResource("2_73i6a")]
+ingredient = NodePath("..")

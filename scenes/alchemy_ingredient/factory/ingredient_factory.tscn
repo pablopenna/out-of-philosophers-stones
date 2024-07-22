@@ -1,8 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cegd3hhiafncc"]
+[gd_scene load_steps=4 format=3 uid="uid://cegd3hhiafncc"]
 
 [ext_resource type="Script" path="res://scenes/alchemy_ingredient/factory/ingredient_factory.gd" id="1_jbn68"]
-[ext_resource type="PackedScene" uid="uid://desj31vcxej0a" path="res://scenes/alchemy_ingredient/alchemy_ingredient.tscn" id="2_jk1np"]
+[ext_resource type="PackedScene" uid="uid://desj31vcxej0a" path="res://scenes/alchemy_ingredient/base/alchemy_ingredient.tscn" id="2_u86ib"]
+[ext_resource type="PackedScene" uid="uid://c1ri6r0h0r8bl" path="res://scenes/alchemy_ingredient/tossed/tossed_ingredient.tscn" id="3_m14tt"]
 
 [node name="IngredientFactory" type="Node2D"]
 script = ExtResource("1_jbn68")
-ingredientScene = ExtResource("2_jk1np")
+ingredientScene = ExtResource("2_u86ib")
+tossedIngredientScene = ExtResource("3_m14tt")
