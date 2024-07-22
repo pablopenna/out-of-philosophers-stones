@@ -56,8 +56,8 @@ position = Vector2(557, 391)
 
 [node name="Ingredient2" parent="." instance=ExtResource("9_77xp5")]
 position = Vector2(580, 391)
-ingredient = 1
+type = 1
 
 [node name="Ingredient3" parent="." instance=ExtResource("9_77xp5")]
 position = Vector2(604, 391)
-ingredient = 2
+type = 2

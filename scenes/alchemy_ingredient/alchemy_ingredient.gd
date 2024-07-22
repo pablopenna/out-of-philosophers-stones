@@ -6,4 +6,4 @@ enum IngredientType {
 	BONE
 }
 
-@export var ingredient: IngredientType
+@export var type: IngredientType

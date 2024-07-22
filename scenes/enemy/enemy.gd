@@ -12,7 +12,7 @@ func _ready() -> void:
 	hp_manager.health_zeroed.connect(_on_died)
 
 func _on_died() -> void:
-	ingredient_factory.create_ingredient()
+	ingredient_factory.create_random_ingredient(true)
 	
 	died.emit()
 	GlobalEvents.enemy_killed.emit()

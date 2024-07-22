@@ -1,6 +1,7 @@
 class_name IngredientStash extends Area2D
 
 var _stash: Dictionary
+@export var ingredient_factory: IngredientFactory
 
 signal ingredient_picked_up(ingredient: AlchemyIngredient)
 
@@ -11,8 +12,17 @@ func _ready() -> void:
 func get_stash() -> Dictionary:
 	return _stash
 
-func toss(ingredientType: AlchemyIngredient.IngredientType) -> void:
-	pass
+func toss(ingredientType: AlchemyIngredient.IngredientType) -> bool:
+	if not _has_remaining_ingredients_of_type(ingredientType):
+		return false
+	_stash[ingredientType] -= 1
+	var ingredient: AlchemyIngredient = ingredient_factory.create_ingredient(ingredientType)	
+	AddToTreeUtils.add_ingredient_to_tree(ingredient)
+	return true
+
+func _has_remaining_ingredients_of_type(ingredientType: AlchemyIngredient.IngredientType) -> bool:
+	return _stash[ingredientType] > 0
+	
 
 func _initialize_stash() -> void:
 	_stash = {}
@@ -20,7 +30,7 @@ func _initialize_stash() -> void:
 		_stash[type] = 0
 
 func _pickup(ingredient: AlchemyIngredient) -> void:
-	_stash[ingredient.ingredient] += 1
+	_stash[ingredient.type] += 1
 	ingredient_picked_up.emit(ingredient)
 	ingredient.queue_free() # Remove from floor after picking it up
 

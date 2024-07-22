@@ -1,8 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://8efnrqtax03l"]
+[gd_scene load_steps=3 format=3 uid="uid://8efnrqtax03l"]
 
 [ext_resource type="Script" path="res://scenes/alchemy_ingredient/ingredient_stash.gd" id="1_37ybk"]
+[ext_resource type="PackedScene" uid="uid://cegd3hhiafncc" path="res://scenes/alchemy_ingredient/ingredient_factory.tscn" id="2_haov2"]
 
-[node name="IngredientStash" type="Area2D"]
+[node name="IngredientStash" type="Area2D" node_paths=PackedStringArray("ingredient_factory")]
 collision_layer = 0
 collision_mask = 256
 script = ExtResource("1_37ybk")
+ingredient_factory = NodePath("IngredientFactory")
+
+[node name="IngredientFactory" parent="." instance=ExtResource("2_haov2")]
