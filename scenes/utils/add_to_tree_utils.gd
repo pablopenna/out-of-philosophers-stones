@@ -1,6 +1,7 @@
 extends Node # To be autoloaded
 
-const INGREDIENT_CONTAINER_GROUP = "IngredientContainer"
+const INGREDIENT_CONTAINER_GROUP: String = "IngredientContainer"
+const PROJECTILE_CONTAINER_GROUP: String = "ProjectileContainer"
 
 func add_node_to_tree(node: Node, container_with_group: String) -> void:
 	var ingredientContainer: Node = get_tree().get_first_node_in_group(container_with_group)
@@ -12,3 +13,6 @@ func add_node_to_tree(node: Node, container_with_group: String) -> void:
 
 func add_ingredient_to_tree(ingredient: AlchemyIngredient) -> void:
 	add_node_to_tree(ingredient, INGREDIENT_CONTAINER_GROUP)
+
+func add_projectile_to_tree(projectile: Projectile) -> void:
+	add_node_to_tree(projectile, PROJECTILE_CONTAINER_GROUP)

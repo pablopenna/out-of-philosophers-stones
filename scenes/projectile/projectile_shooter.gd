@@ -19,8 +19,4 @@ func shoot(
 	projectile.global_position = initial_position
 	projectile.damage = damage
 	
-	var projectileContainer: Node = get_tree().get_first_node_in_group("ProjectileContainer")
-	if projectileContainer != null:
-		projectileContainer.add_child(projectile)
-	else:
-		get_tree().root.add_child(projectile)
+	AddToTreeUtils.add_projectile_to_tree(projectile)
