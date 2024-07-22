@@ -5,7 +5,7 @@ class_name State extends Node
 # If a state needs to get a value from passed by another state, they should use the context
 signal change_to_state(stateName: String, context: Dictionary)
 
-var managed_entity: Entity
+var managed_node: Node
 # Use this property rather than the node name to define the state name
 # StateManager uses this as the dict key where states are stored
 var state_name: String

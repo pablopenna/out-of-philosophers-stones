@@ -51,3 +51,5 @@ bone_texture = ExtResource("5_2m1wf")
 sprite_frames = SubResource("SpriteFrames_odtt8")
 autoplay = "default"
 frame_progress = 0.155506
+
+[node name="StateMachine" type="Node" parent="."]

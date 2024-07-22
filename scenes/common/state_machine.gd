@@ -1,9 +1,9 @@
-class_name StateManager extends Node
+class_name StateMachine extends Node
 
 var states: Dictionary
 var current_state: State = initial_state
 @export var initial_state: State
-@export var managed_entity: Entity
+@export var managed_node: Node
 
 signal state_changed(new_state: String, old_state: String, context: Dictionary)
 
@@ -33,7 +33,7 @@ func initialize_states() -> void:
 		var state: State = states[stateKey]
 		
 		state.change_to_state.connect(change_to_state)
-		state.managed_entity = self.managed_entity
+		state.managed_node = managed_node
 
 func change_to_state(new_state_name: String, context: Dictionary) -> void:
 	var old_state: State = current_state
