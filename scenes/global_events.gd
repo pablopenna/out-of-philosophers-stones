@@ -6,5 +6,6 @@ signal player_damaged
 
 signal player_acquired_ingredient(ingredientType: AlchemyIngredient.IngredientType)
 signal player_tossed_ingredient(ingredientType: AlchemyIngredient.IngredientType)
+signal ingredient_ready_to_mix(ingredient: AlchemyIngredient)
 
 signal score_updated(new_score: int)

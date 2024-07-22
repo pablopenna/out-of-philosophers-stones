@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://p143u0yu7cua"]
+[gd_scene load_steps=22 format=3 uid="uid://p143u0yu7cua"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_qd4n7"]
 [ext_resource type="Texture2D" uid="uid://b3ud6cvdh6bu4" path="res://art/player.png" id="2_si4qa"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://b2xicndr3vl6n" path="res://art/player_heart.png" id="9_lairw"]
 [ext_resource type="Script" path="res://scenes/player/BulletProximityEffect.gd" id="11_huqqd"]
 [ext_resource type="PackedScene" uid="uid://8efnrqtax03l" path="res://scenes/alchemy_ingredient/stash/ingredient_stash.tscn" id="12_1uqug"]
+[ext_resource type="PackedScene" uid="uid://dra0jid47wmah" path="res://scenes/alchemy_ingredient/mixer/ingredient_mixer.tscn" id="13_1c4bg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p6e2r"]
 size = Vector2(17, 17)
@@ -118,5 +119,7 @@ shape = SubResource("CircleShape2D_gtw83")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="IngredientStash"]
 position = Vector2(-1, 0)
 shape = SubResource("CircleShape2D_vfm5v")
+
+[node name="IngredientMixer" parent="." instance=ExtResource("13_1c4bg")]
 
 [connection signal="health_decreased" from="HealthPointsManager" to="HurtSound" method="_on_health_points_manager_health_decreased"]

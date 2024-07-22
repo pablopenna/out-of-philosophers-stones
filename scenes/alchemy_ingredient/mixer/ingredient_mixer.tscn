@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dra0jid47wmah"]
+
+[ext_resource type="Script" path="res://scenes/alchemy_ingredient/mixer/ingredient_mixer.gd" id="1_05paw"]
+[ext_resource type="PackedScene" uid="uid://bf8w8c0v5afmv" path="res://scenes/gun/gun.tscn" id="2_5y6ri"]
+
+[node name="IngredientMixer" type="Node2D"]
+script = ExtResource("1_05paw")
+gun_scene = ExtResource("2_5y6ri")

@@ -10,6 +10,8 @@ projectile_shooter = NodePath("ProjectileShooter")
 bullet_speed = 1000
 bullet_damage = 3
 bullet_creation_point = NodePath("BulletCreationPoint")
+projectile_scanned_layer = 128
+projectile_layer = 16
 sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
