@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://8efnrqtax03l"]
 
-[ext_resource type="Script" path="res://scenes/alchemy_ingredient/ingredient_stash.gd" id="1_37ybk"]
-[ext_resource type="PackedScene" uid="uid://cegd3hhiafncc" path="res://scenes/alchemy_ingredient/ingredient_factory.tscn" id="2_haov2"]
+[ext_resource type="Script" path="res://scenes/alchemy_ingredient/stash/ingredient_stash.gd" id="1_37ybk"]
+[ext_resource type="PackedScene" uid="uid://cegd3hhiafncc" path="res://scenes/alchemy_ingredient/factory/ingredient_factory.tscn" id="2_haov2"]
 
 [node name="IngredientStash" type="Area2D" node_paths=PackedStringArray("ingredient_factory")]
 collision_layer = 0

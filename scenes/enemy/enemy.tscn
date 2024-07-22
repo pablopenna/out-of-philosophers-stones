@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bivwencvg08tj" path="res://scenes/hp_manager/health_points_manager.tscn" id="6_o5h45"]
 [ext_resource type="PackedScene" uid="uid://b8yls0byl10aq" path="res://scenes/projectile/projectile_shooter.tscn" id="7_q66ql"]
 [ext_resource type="Script" path="res://scenes/enemy/pattern_shooter.gd" id="8_hgaiu"]
-[ext_resource type="PackedScene" uid="uid://cegd3hhiafncc" path="res://scenes/alchemy_ingredient/ingredient_factory.tscn" id="10_wi14e"]
+[ext_resource type="PackedScene" uid="uid://cegd3hhiafncc" path="res://scenes/alchemy_ingredient/factory/ingredient_factory.tscn" id="10_wi14e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nhs8a"]
 size = Vector2(22, 25)
