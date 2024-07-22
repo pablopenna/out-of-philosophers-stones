@@ -2,9 +2,14 @@ class_name IngredientStash extends Area2D
 
 var _stash: Dictionary
 
+signal ingredient_picked_up(ingredient: AlchemyIngredient)
+
 func _ready() -> void:
 	_initialize_stash()
 	self.area_entered.connect(_process_collision)
+
+func get_stash() -> Dictionary:
+	return _stash
 
 func toss(ingredientType: AlchemyIngredient.IngredientType) -> void:
 	pass
@@ -16,8 +21,8 @@ func _initialize_stash() -> void:
 
 func _pickup(ingredient: AlchemyIngredient) -> void:
 	_stash[ingredient.ingredient] += 1
+	ingredient_picked_up.emit(ingredient)
 	ingredient.queue_free() # Remove from floor after picking it up
-	print(_stash)
 
 func _process_collision(area: Area2D) -> void:
 	var ingredient = area as AlchemyIngredient

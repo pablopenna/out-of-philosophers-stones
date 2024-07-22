@@ -4,10 +4,12 @@ const run_speed: int = 300
 const walk_speed: int = 100
 @export var animation_player: AnimationPlayer
 @export var hp_manager: HealthPointsManager
+@export var ingredient_stash: IngredientStash
 
 func _ready() -> void:
 	animation_player.play("Player/idle")
 	hp_manager.health_decreased.connect(_on_damaged)
+	ingredient_stash.ingredient_picked_up.connect(_on_ingredient_picked_up)
 
 func _physics_process(delta: float) -> void:
 	_move()
@@ -22,3 +24,6 @@ func _move() -> void:
 
 func _on_damaged(_new_health_amount: int, _previous_health_amount: int) -> void:
 	GlobalEvents.player_damaged.emit()
+	
+func _on_ingredient_picked_up(ingredient: AlchemyIngredient) -> void:
+	GlobalEvents.player_acquired_ingredient.emit(ingredient, ingredient_stash.get_stash())

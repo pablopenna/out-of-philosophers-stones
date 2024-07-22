@@ -55,13 +55,14 @@ radius = 30.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_vfm5v"]
 radius = 18.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animation_player", "hp_manager")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animation_player", "hp_manager", "ingredient_stash")]
 collision_layer = 2
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_qd4n7")
 animation_player = NodePath("AnimationPlayer")
 hp_manager = NodePath("HealthPointsManager")
+ingredient_stash = NodePath("IngredientStash")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 4.5)

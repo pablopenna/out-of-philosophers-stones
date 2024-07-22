@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://bb1aihwwoqf1r"]
+[gd_scene load_steps=10 format=3 uid="uid://bb1aihwwoqf1r"]
 
-[ext_resource type="LabelSettings" uid="uid://db1a0y17bcjrj" path="res://scenes/ui/score_label_settings.tres" id="1_ef70x"]
-[ext_resource type="Script" path="res://scenes/ui/show_score.gd" id="2_3j8mj"]
-[ext_resource type="Script" path="res://scenes/ui/show_hp.gd" id="3_fr2qf"]
-[ext_resource type="PackedScene" uid="uid://dqk5kvhnr3qb2" path="res://scenes/ui/ui_heart.tscn" id="4_l4m8o"]
+[ext_resource type="LabelSettings" uid="uid://db1a0y17bcjrj" path="res://scenes/ui/score/score_label_settings.tres" id="1_ef70x"]
+[ext_resource type="Script" path="res://scenes/ui/score/show_score.gd" id="2_3j8mj"]
+[ext_resource type="Script" path="res://scenes/ui/hp/show_hp.gd" id="3_fr2qf"]
+[ext_resource type="PackedScene" uid="uid://dqk5kvhnr3qb2" path="res://scenes/ui/hp/ui_heart.tscn" id="4_l4m8o"]
 [ext_resource type="Texture2D" uid="uid://es7bxu6grpjc" path="res://art/hand.png" id="5_o3res"]
 [ext_resource type="Texture2D" uid="uid://dios16sab1e1w" path="res://art/bone.png" id="6_x455k"]
 [ext_resource type="Texture2D" uid="uid://cp4hv08ewgh08" path="res://art/eye.png" id="7_eserb"]
-[ext_resource type="LabelSettings" uid="uid://dkotbllaibpuw" path="res://scenes/ui/material_label_settings.tres" id="8_7h6is"]
+[ext_resource type="Script" path="res://scenes/ui/ingredients/ingredient_counter.gd" id="7_r7s86"]
+[ext_resource type="LabelSettings" uid="uid://dkotbllaibpuw" path="res://scenes/ui/ingredients/ingredient_label_settings.tres" id="8_7h6is"]
 
 [node name="UI" type="CanvasLayer"]
 
@@ -71,53 +72,58 @@ layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 2
 
-[node name="Materials" type="HBoxContainer" parent="Control/MarginContainer/Bottom"]
+[node name="Ingredients" type="HBoxContainer" parent="Control/MarginContainer/Bottom"]
 layout_mode = 2
 
-[node name="HandPanelContainer" type="PanelContainer" parent="Control/MarginContainer/Bottom/Materials"]
+[node name="HandPanelContainer" type="PanelContainer" parent="Control/MarginContainer/Bottom/Ingredients"]
 layout_mode = 2
 
-[node name="Hand" type="TextureRect" parent="Control/MarginContainer/Bottom/Materials/HandPanelContainer"]
+[node name="Hand" type="TextureRect" parent="Control/MarginContainer/Bottom/Ingredients/HandPanelContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("5_o3res")
 
-[node name="Label" type="Label" parent="Control/MarginContainer/Bottom/Materials/HandPanelContainer"]
+[node name="Label" type="Label" parent="Control/MarginContainer/Bottom/Ingredients/HandPanelContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 text = "0"
 label_settings = ExtResource("8_7h6is")
 horizontal_alignment = 1
 vertical_alignment = 2
+script = ExtResource("7_r7s86")
 
-[node name="BonePanelContainer2" type="PanelContainer" parent="Control/MarginContainer/Bottom/Materials"]
+[node name="BonePanelContainer2" type="PanelContainer" parent="Control/MarginContainer/Bottom/Ingredients"]
 layout_mode = 2
 
-[node name="Bone" type="TextureRect" parent="Control/MarginContainer/Bottom/Materials/BonePanelContainer2"]
+[node name="Bone" type="TextureRect" parent="Control/MarginContainer/Bottom/Ingredients/BonePanelContainer2"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("6_x455k")
 
-[node name="Label" type="Label" parent="Control/MarginContainer/Bottom/Materials/BonePanelContainer2"]
+[node name="Label" type="Label" parent="Control/MarginContainer/Bottom/Ingredients/BonePanelContainer2"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 text = "0"
 label_settings = ExtResource("8_7h6is")
 horizontal_alignment = 1
 vertical_alignment = 2
+script = ExtResource("7_r7s86")
+tracked_ingredient_type = 2
 
-[node name="EyePanelContainer3" type="PanelContainer" parent="Control/MarginContainer/Bottom/Materials"]
+[node name="EyePanelContainer3" type="PanelContainer" parent="Control/MarginContainer/Bottom/Ingredients"]
 layout_mode = 2
 
-[node name="Eye" type="TextureRect" parent="Control/MarginContainer/Bottom/Materials/EyePanelContainer3"]
+[node name="Eye" type="TextureRect" parent="Control/MarginContainer/Bottom/Ingredients/EyePanelContainer3"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("7_eserb")
 
-[node name="Label" type="Label" parent="Control/MarginContainer/Bottom/Materials/EyePanelContainer3"]
+[node name="Label" type="Label" parent="Control/MarginContainer/Bottom/Ingredients/EyePanelContainer3"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 text = "0"
 label_settings = ExtResource("8_7h6is")
 horizontal_alignment = 1
 vertical_alignment = 2
+script = ExtResource("7_r7s86")
+tracked_ingredient_type = 1
