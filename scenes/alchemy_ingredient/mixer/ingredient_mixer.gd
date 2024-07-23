@@ -1,6 +1,7 @@
 class_name IngredientMixer extends Node2D
 
 @export var gun_scene: PackedScene
+@export var bazooka_scene: PackedScene
 
 var mixing_queue: Array[AlchemyIngredient]
 var recipes: Dictionary
@@ -38,7 +39,7 @@ func _mix_ingredients() -> void:
 	var first: AlchemyIngredient = mixing_queue.pop_front() as AlchemyIngredient
 	var second: AlchemyIngredient = mixing_queue.pop_front() as AlchemyIngredient
 	var mix_scene: PackedScene = _get_mixing_ingredients_result(first.type, second.type)
-	var mix = mix_scene.instantiate()
+	var mix: Transmutation = mix_scene.instantiate()
 	mix.global_position = global_position
 	AddToTreeUtils.add_mix_to_tree(mix)
 
@@ -46,10 +47,13 @@ func _get_mixing_ingredients_result(
 	first_type: AlchemyIngredient.IngredientType, 
 	second_type: AlchemyIngredient.IngredientType
 ) -> PackedScene:
-	print(recipes)
-	print(first_type)
-	print(second_type)
-	print("===")
-	print(recipes[first_type])
-	return recipes[first_type][second_type]
+	var ingredients: Array[AlchemyIngredient.IngredientType] = [first_type, second_type]
+	# match does not care about order of elements within array
+	match ingredients: 
+		[AlchemyIngredient.IngredientType.HAND, _]:
+			return bazooka_scene
+		[AlchemyIngredient.IngredientType.EYE, AlchemyIngredient.IngredientType.BONE]:
+			return bazooka_scene
+		_:
+			return gun_scene
 	
