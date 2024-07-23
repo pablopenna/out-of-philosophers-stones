@@ -1,4 +1,4 @@
-extends Transmutation
+extends Node2D
 
 var bullet_initial_speed: int = 50
 var bullet_acceleration: int = 500
