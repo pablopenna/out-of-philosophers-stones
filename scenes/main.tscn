@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cgr1cp3u4fqks"]
+[gd_scene load_steps=11 format=3 uid="uid://cgr1cp3u4fqks"]
 
 [ext_resource type="PackedScene" uid="uid://p143u0yu7cua" path="res://scenes/player/player.tscn" id="1_6ulhn"]
 [ext_resource type="Texture2D" uid="uid://b565nqi88eb6f" path="res://art/background.png" id="1_q7itl"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://bb1aihwwoqf1r" path="res://scenes/ui/ui.tscn" id="7_j1fju"]
 [ext_resource type="Script" path="res://scenes/game_state/in-game-timer.gd" id="8_c2735"]
 [ext_resource type="PackedScene" uid="uid://desj31vcxej0a" path="res://scenes/alchemy_ingredient/base/alchemy_ingredient.tscn" id="9_77xp5"]
-[ext_resource type="PackedScene" uid="uid://bmjunmmohggii" path="res://scenes/bazooka/bazooka.tscn" id="10_81ody"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1glpr"]
 size = Vector2(1386, 789)
@@ -22,23 +21,17 @@ size = Vector2(1386, 789)
 autostart = true
 script = ExtResource("8_c2735")
 
-[node name="Background" type="Sprite2D" parent="."]
-position = Vector2(683, 384)
-texture = ExtResource("1_q7itl")
-
-[node name="Barrier" parent="." instance=ExtResource("4_qa7m2")]
-
-[node name="Player" parent="." instance=ExtResource("1_6ulhn")]
-position = Vector2(579, 316)
-
-[node name="Enemy" parent="." instance=ExtResource("2_jxpoc")]
-position = Vector2(101, 96)
-
 [node name="ProjectileContainer" type="Node" parent="." groups=["ProjectileContainer"]]
 
 [node name="IngredientContainer" type="Node" parent="." groups=["IngredientContainer"]]
 
 [node name="MixContainer" type="Node" parent="." groups=["MixContainer"]]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(683, 384)
+texture = ExtResource("1_q7itl")
+
+[node name="Barrier" parent="." instance=ExtResource("4_qa7m2")]
 
 [node name="DestroyAnythingOutside" type="Area2D" parent="."]
 collision_layer = 0
@@ -48,6 +41,12 @@ script = ExtResource("5_8lrmf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DestroyAnythingOutside"]
 position = Vector2(683, 384.5)
 shape = SubResource("RectangleShape2D_1glpr")
+
+[node name="Player" parent="." instance=ExtResource("1_6ulhn")]
+position = Vector2(579, 316)
+
+[node name="Enemy" parent="." instance=ExtResource("2_jxpoc")]
+position = Vector2(101, 96)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
 zoom = Vector2(2, 2)
@@ -64,6 +63,3 @@ type = 1
 [node name="Ingredient3" parent="." instance=ExtResource("9_77xp5")]
 position = Vector2(604, 391)
 type = 2
-
-[node name="Bazooka" parent="." instance=ExtResource("10_81ody")]
-position = Vector2(579, 472)

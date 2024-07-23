@@ -2,28 +2,11 @@ class_name IngredientMixer extends Node2D
 
 @export var gun_scene: PackedScene
 @export var bazooka_scene: PackedScene
+@export var aegis_scene: PackedScene
 
 var mixing_queue: Array[AlchemyIngredient]
-var recipes: Dictionary
 
 func _ready() -> void:
-	recipes = {
-		AlchemyIngredient.IngredientType.HAND: {
-			AlchemyIngredient.IngredientType.HAND: gun_scene,
-			AlchemyIngredient.IngredientType.BONE: gun_scene,
-			AlchemyIngredient.IngredientType.EYE: gun_scene,
-		},
-		AlchemyIngredient.IngredientType.BONE: {
-			AlchemyIngredient.IngredientType.HAND: gun_scene,
-			AlchemyIngredient.IngredientType.BONE: gun_scene,
-			AlchemyIngredient.IngredientType.EYE: gun_scene,
-		},
-		AlchemyIngredient.IngredientType.EYE: {
-			AlchemyIngredient.IngredientType.HAND: gun_scene,
-			AlchemyIngredient.IngredientType.BONE: gun_scene,
-			AlchemyIngredient.IngredientType.EYE: gun_scene,
-		},
-	}
 	mixing_queue = []
 	GlobalEvents.ingredient_ready_to_mix.connect(_add_ingredient_to_mix_queue)
 	
@@ -50,9 +33,9 @@ func _get_mixing_ingredients_result(
 	var ingredients: Array[AlchemyIngredient.IngredientType] = [first_type, second_type]
 	# match does not care about order of elements within array
 	match ingredients: 
+		[AlchemyIngredient.IngredientType.BONE, _]:
+			return aegis_scene
 		[AlchemyIngredient.IngredientType.HAND, _]:
-			return bazooka_scene
-		[AlchemyIngredient.IngredientType.EYE, AlchemyIngredient.IngredientType.BONE]:
 			return bazooka_scene
 		_:
 			return gun_scene
