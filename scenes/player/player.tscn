@@ -80,8 +80,6 @@ libraries = {
 }
 
 [node name="Gun" parent="." instance=ExtResource("3_pra16")]
-projectile_scanned_layer = 128
-projectile_layer = 16
 
 [node name="Hurtbox" parent="." instance=ExtResource("5_qrsrk")]
 collision_layer = 32

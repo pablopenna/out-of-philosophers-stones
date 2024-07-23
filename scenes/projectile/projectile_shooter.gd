@@ -9,7 +9,7 @@ func shoot(
 	direction: Vector2, 
 	speed: float,
 	damage: int,
-) -> void:
+) -> Projectile:
 	var projectile: Projectile = projectileScene.instantiate()
 	
 	projectile.collision_layer = self.projectile_layer
@@ -20,3 +20,5 @@ func shoot(
 	projectile.damage = damage
 	
 	AddToTreeUtils.add_projectile_to_tree(projectile)
+	
+	return projectile

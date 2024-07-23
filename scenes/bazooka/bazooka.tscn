@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmjunmmohggii"]
+
+[ext_resource type="Script" path="res://scenes/bazooka/bazooka.gd" id="1_1d2tx"]
+[ext_resource type="PackedScene" uid="uid://b8yls0byl10aq" path="res://scenes/projectile/projectile_shooter.tscn" id="2_7qju0"]
+[ext_resource type="Texture2D" uid="uid://ciryo5edx6ifj" path="res://art/bazooka.png" id="3_0fgyr"]
+
+[node name="Bazooka" type="Node2D" node_paths=PackedStringArray("projectile_shooter", "sprite", "bullet_creation_point")]
+script = ExtResource("1_1d2tx")
+projectile_shooter = NodePath("ProjectileShooter")
+sprite = NodePath("Sprite2D")
+bullet_creation_point = NodePath("BulletCreationPoint")
+projectile_scanned_layer = 128
+projectile_layer = 16
+
+[node name="ProjectileShooter" parent="." instance=ExtResource("2_7qju0")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("3_0fgyr")
+
+[node name="BulletCreationPoint" type="Node2D" parent="."]
+position = Vector2(26, 0)

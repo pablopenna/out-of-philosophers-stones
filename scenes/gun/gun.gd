@@ -1,4 +1,4 @@
-extends Node2D
+extends Transmutation
 
 @export var projectile_shooter: ProjectileShooter
 @export var bullet_speed: int = 100
