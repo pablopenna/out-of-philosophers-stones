@@ -12,7 +12,6 @@ func _ready() -> void:
 	
 func _process(_delta: float) -> void:
 	if entity_to_track:
-		_flip_horizontally_if_entity_facing_left()
 		_set_position_relative_to_entity()
 	
 func _on_area_entered(area: Area2D) -> void:
@@ -36,12 +35,6 @@ func _on_hurtbox_entered(hurtbox: Hurtbox) -> void:
 
 func _on_hit(hurtbox: Hurtbox, hitbox_data: HitboxData) -> void:
 	pass
-	
-func _flip_horizontally_if_entity_facing_left() -> void:
-	if entity_to_track.facing_direction == Vector2.LEFT:
-		self.scale.x = -1
-	else:
-		self.scale.x = 1
-		
+
 func _set_position_relative_to_entity() -> void:
 	self.global_position = entity_to_track.global_position

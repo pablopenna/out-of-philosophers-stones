@@ -5,7 +5,7 @@ extends Sprite2D
 @export var eye_texture: CompressedTexture2D
 @export var bone_texture: CompressedTexture2D
 
-func _ready():
+func _ready() -> void:
 	match ingredient.type:
 		AlchemyIngredient.IngredientType.HAND:
 			self.texture = hand_texture

@@ -23,7 +23,7 @@ func _move() -> void:
 		Input.get_axis("move_up", "move_down")
 	).normalized() * move_speed
 	
-func _process_toss_ingredients():
+func _process_toss_ingredients() -> void:
 	if Input.is_action_just_pressed("toss_bone"):
 		_toss_ingredient(AlchemyIngredient.IngredientType.BONE)
 	if Input.is_action_just_pressed("toss_eye"):

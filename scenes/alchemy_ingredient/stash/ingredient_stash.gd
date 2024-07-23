@@ -30,7 +30,7 @@ func _has_remaining_ingredients_of_type(ingredientType: AlchemyIngredient.Ingred
 
 func _initialize_stash() -> void:
 	_stash = {}
-	for type in AlchemyIngredient.IngredientType.values(): # Enum is a dictionary under the hood it seems. Need the int values for _pickup to work properly as Ingredient.ingredient returns int
+	for type:int in AlchemyIngredient.IngredientType.values(): # Enum is a dictionary under the hood it seems. Need the int values for _pickup to work properly as Ingredient.type returns int
 		_stash[type] = 0
 
 func _pickup(ingredient: AlchemyIngredient) -> void:
@@ -39,6 +39,6 @@ func _pickup(ingredient: AlchemyIngredient) -> void:
 	ingredient.queue_free() # Remove from floor after picking it up
 
 func _process_collision(area: Area2D) -> void:
-	var ingredient = area as AlchemyIngredient
+	var ingredient: AlchemyIngredient = area as AlchemyIngredient
 	if ingredient != null:
 		_pickup(ingredient)

@@ -22,7 +22,7 @@ func _mix_ingredients() -> void:
 	var first: AlchemyIngredient = mixing_queue.pop_front() as AlchemyIngredient
 	var second: AlchemyIngredient = mixing_queue.pop_front() as AlchemyIngredient
 	var mix_scene: PackedScene = _get_mixing_ingredients_result(first.type, second.type)
-	var mix = mix_scene.instantiate()
+	var mix: Node2D = mix_scene.instantiate()
 	mix.global_position = global_position
 	AddToTreeUtils.add_mix_to_tree(mix)
 
