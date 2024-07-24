@@ -1,21 +1,20 @@
-extends Hitbox
+class_name Grenade extends Hitbox
 
-@export var target: Node2D
-var target_position: Vector2
+var target_position: Vector2 # To be set by the instantiator
+
 var initial_position: Vector2
 var intermediate_parabole_point: Vector2
 var elapsed_time: float
 
-const height_of_intermediate_point: float = 500
+const height_of_intermediate_point: float = 100
 const speed: float = 0.8
 
 func _ready() -> void:
-	super._ready()
+	super._ready() # Very important
 	self.disable()
 	
 	elapsed_time = 0
 	initial_position = global_position
-	target_position = target.global_position
 	_calculate_intermediate_parabole_point()
 	
 func _process(delta: float) -> void:
@@ -40,9 +39,9 @@ func _get_bezier_position_given_time(time: float) -> Vector2:
 	return _quadratic_bezier(initial_position, intermediate_parabole_point, target_position, time)
 
 func _quadratic_bezier(p0: Vector2, p1: Vector2, p2: Vector2, t: float) -> Vector2:
-	var q0 = p0.lerp(p1, t)
-	var q1 = p1.lerp(p2, t)
-	var r = q0.lerp(q1, t)
+	var q0: Vector2 = p0.lerp(p1, t)
+	var q1: Vector2 = p1.lerp(p2, t)
+	var r: Vector2 = q0.lerp(q1, t)
 	return r
 
 func _has_arrived(time: float) -> bool:

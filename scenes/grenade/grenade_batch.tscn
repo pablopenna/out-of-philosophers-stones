@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://g0u0ntw7nfwq"]
+
+[ext_resource type="Script" path="res://scenes/grenade/grenade_batch.gd" id="1_rne8o"]
+[ext_resource type="PackedScene" uid="uid://cbnxmvmah4wwg" path="res://scenes/grenade/grenade.tscn" id="2_kxied"]
+
+[node name="GrenadeBatch" type="Node2D"]
+script = ExtResource("1_rne8o")
+grenade_scene = ExtResource("2_kxied")

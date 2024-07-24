@@ -25,7 +25,7 @@ func create_random_ingredient(add_to_tree: bool = false) -> AlchemyIngredient:
 	return ingredient
 
 func create_tossed_ingredient(ingredient_type: AlchemyIngredient.IngredientType) -> TossedAlchemyIngredient:
-	var ingredient := tossedIngredientScene.instantiate() as TossedAlchemyIngredient
+	var ingredient: TossedAlchemyIngredient = tossedIngredientScene.instantiate() as TossedAlchemyIngredient
 	ingredient.type = ingredient_type
 	
 	return ingredient
