@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbnxmvmah4wwg"]
+
+[ext_resource type="Script" path="res://scenes/grenade/grenade.gd" id="1_hf6wg"]
+[ext_resource type="Texture2D" uid="uid://g7flf3q8x5fg" path="res://art/grenade.png" id="1_u0f2k"]
+[ext_resource type="Script" path="res://scenes/hitbox/hitbox_data.gd" id="3_x453t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2hchc"]
+radius = 45.0
+
+[node name="Grenade" type="Area2D" node_paths=PackedStringArray("target", "hitbox_data")]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource("1_hf6wg")
+target = NodePath("Target")
+hitbox_data = NodePath("HitboxData")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_u0f2k")
+metadata/_edit_lock_ = true
+
+[node name="Target" type="Node2D" parent="."]
+
+[node name="HitboxData" type="Node" parent="."]
+script = ExtResource("3_x453t")
+damage = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2hchc")

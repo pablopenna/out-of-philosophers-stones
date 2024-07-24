@@ -2,7 +2,7 @@
 # We can set the layer of the hitbox so it can be detected by other collisions
 class_name Hitbox extends Area2D
 
-@export var entity_to_track: Entity
+@export var entity_to_track: Node2D
 @export var hitbox_data: HitboxData
 signal hit
 

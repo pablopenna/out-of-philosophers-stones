@@ -3,6 +3,7 @@ class_name IngredientMixer extends Node2D
 @export var gun_scene: PackedScene
 @export var bazooka_scene: PackedScene
 @export var aegis_scene: PackedScene
+@export var grenade_scene: PackedScene
 
 var mixing_queue: Array[AlchemyIngredient]
 
@@ -37,6 +38,8 @@ func _get_mixing_ingredients_result(
 			return aegis_scene
 		[AlchemyIngredient.IngredientType.HAND, _]:
 			return bazooka_scene
+		[AlchemyIngredient.IngredientType.EYE, _]:
+			return grenade_scene
 		_:
 			return gun_scene
 	

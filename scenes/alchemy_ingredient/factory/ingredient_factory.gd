@@ -18,7 +18,7 @@ func create_ingredient(
 
 func create_random_ingredient(add_to_tree: bool = false) -> AlchemyIngredient:
 	var number_of_different_types: int = len(AlchemyIngredient.IngredientType.keys())
-	var random_type: AlchemyIngredient.IngredientType = randi_range(0, number_of_different_types - 1)
+	var random_type: AlchemyIngredient.IngredientType = randi_range(0, number_of_different_types - 1) as AlchemyIngredient.IngredientType
 	
 	var ingredient: AlchemyIngredient = create_ingredient(random_type, add_to_tree)
 	
