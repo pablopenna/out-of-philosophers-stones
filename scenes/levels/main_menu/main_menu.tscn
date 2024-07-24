@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://dtut44ga4w8bw"]
+
+[ext_resource type="Theme" uid="uid://jfuat3dv2f8r" path="res://other_resources/oops_theme.tres" id="1_epd2t"]
+[ext_resource type="Script" path="res://scenes/levels/main_menu/exit_button.gd" id="2_p4efe"]
+[ext_resource type="Script" path="res://scenes/levels/main_menu/start_game_button.gd" id="2_ulth1"]
+[ext_resource type="Texture2D" uid="uid://d22g0g27ri7gh" path="res://art/cover_small.png" id="3_fged6"]
+[ext_resource type="PackedScene" uid="uid://cgr1cp3u4fqks" path="res://scenes/levels/main.tscn" id="3_mslpb"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_y1dat"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_xam7a"]
+events = [SubResource("InputEventKey_y1dat")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_uqdaw"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_iu3rr"]
+events = [SubResource("InputEventKey_uqdaw")]
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_epd2t")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_fged6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -162.0
+offset_right = 250.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_epd2t")
+alignment = 1
+
+[node name="StartGame" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+shortcut = SubResource("Shortcut_xam7a")
+text = "Start Game"
+script = ExtResource("2_ulth1")
+scene_to_load = ExtResource("3_mslpb")
+
+[node name="Exit" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+shortcut = SubResource("Shortcut_iu3rr")
+text = "Exit"
+script = ExtResource("2_p4efe")
+
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/StartGame" to="CanvasLayer/Control/VBoxContainer/StartGame" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/Exit" to="CanvasLayer/Control/VBoxContainer/Exit" method="_on_pressed"]
