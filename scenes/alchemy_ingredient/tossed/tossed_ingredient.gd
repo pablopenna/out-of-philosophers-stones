@@ -1,7 +1,7 @@
 class_name TossedAlchemyIngredient extends AlchemyIngredient
 
-const initial_linear_speed: int = 250
-const acceleration: int = -300
+const initial_linear_speed: int = 750
+const acceleration: int = -5000
 const angular_speed: float = 1.0
 var speed: float
 
