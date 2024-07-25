@@ -32,14 +32,26 @@ func _get_mixing_ingredients_result(
 	second_type: AlchemyIngredient.IngredientType
 ) -> PackedScene:
 	var ingredients: Array[AlchemyIngredient.IngredientType] = [first_type, second_type]
-	# match does not care about order of elements within array
 	match ingredients: 
-		[AlchemyIngredient.IngredientType.BONE, _]:
-			return aegis_scene
-		[AlchemyIngredient.IngredientType.HAND, _]:
-			return bazooka_scene
-		[AlchemyIngredient.IngredientType.EYE, _]:
+		[AlchemyIngredient.IngredientType.HAND, AlchemyIngredient.IngredientType.HAND]:
 			return grenade_batch_scene
+		[AlchemyIngredient.IngredientType.HAND, AlchemyIngredient.IngredientType.BONE]:
+			return aegis_scene
+		[AlchemyIngredient.IngredientType.HAND, AlchemyIngredient.IngredientType.EYE]:
+			return grenade_batch_scene
+		[AlchemyIngredient.IngredientType.BONE, AlchemyIngredient.IngredientType.HAND]:
+			return gun_scene
+		[AlchemyIngredient.IngredientType.BONE, AlchemyIngredient.IngredientType.BONE]:
+			return aegis_scene
+		[AlchemyIngredient.IngredientType.BONE, AlchemyIngredient.IngredientType.EYE]:
+			return grenade_batch_scene
+		[AlchemyIngredient.IngredientType.EYE, AlchemyIngredient.IngredientType.HAND]:
+			return aegis_scene
+		[AlchemyIngredient.IngredientType.EYE, AlchemyIngredient.IngredientType.BONE]:
+			return bazooka_scene
+		[AlchemyIngredient.IngredientType.EYE, AlchemyIngredient.IngredientType.EYE]:
+			return gun_scene
 		_:
+			printerr("Recipe error: mix not considered")
 			return gun_scene
 	
