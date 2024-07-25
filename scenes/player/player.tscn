@@ -54,7 +54,7 @@ shader_parameter/intensity = 0.0
 radius = 30.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vfm5v"]
-radius = 18.0
+radius = 27.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animation_player", "hp_manager", "ingredient_stash")]
 collision_layer = 2
