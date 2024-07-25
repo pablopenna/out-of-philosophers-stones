@@ -25,7 +25,6 @@ func stun(duration_in_seconds: int) -> void:
 	state_machine.change_to_state(
 		"stunned", 
 		{
-			"duration": duration_in_seconds, 
-			"previous_state": state_machine.current_state.state_name
+			"duration": duration_in_seconds,
 		}
 	)
