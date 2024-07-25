@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dtut44ga4w8bw"]
+[gd_scene load_steps=11 format=3 uid="uid://dtut44ga4w8bw"]
 
 [ext_resource type="Theme" uid="uid://jfuat3dv2f8r" path="res://other_resources/oops_theme.tres" id="1_epd2t"]
+[ext_resource type="Script" path="res://scenes/levels/main_menu/add_random_decorations.gd" id="2_bv5mw"]
 [ext_resource type="Script" path="res://scenes/levels/main_menu/exit_button.gd" id="2_p4efe"]
 [ext_resource type="Script" path="res://scenes/levels/main_menu/start_game_button.gd" id="2_ulth1"]
 [ext_resource type="PackedScene" uid="uid://cgr1cp3u4fqks" path="res://scenes/levels/main.tscn" id="3_mslpb"]
+[ext_resource type="PackedScene" uid="uid://bv0gud85vx8it" path="res://scenes/levels/main_menu/floating_decoration.tscn" id="5_aptmo"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_y1dat"]
 device = -1
@@ -33,9 +35,10 @@ grow_vertical = 2
 theme = ExtResource("1_epd2t")
 
 [node name="TextureRect" type="ColorRect" parent="CanvasLayer/Control"]
-layout_mode = 2
-offset_right = 1920.0
-offset_bottom = 1080.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
@@ -47,10 +50,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 40
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Decorations" type="Container" parent="CanvasLayer/Control/MarginContainer"]
+layout_mode = 2
+script = ExtResource("2_bv5mw")
+number_of_decorations = 50
+decoration_scene = ExtResource("5_aptmo")
 
 [node name="TitleContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer"]
 layout_mode = 2
@@ -59,22 +68,23 @@ size_flags_vertical = 0
 [node name="Title" type="Label" parent="CanvasLayer/Control/MarginContainer/TitleContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_constants/outline_size = 64
 theme_override_font_sizes/font_size = 164
 text = "Out Of Philosopher's Stones"
 uppercase = true
 
-[node name="Title2" type="Label" parent="CanvasLayer/Control/MarginContainer/TitleContainer"]
+[node name="Subtitle" type="Label" parent="CanvasLayer/Control/MarginContainer/TitleContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_constants/outline_size = 64
 theme_override_font_sizes/font_size = 100
 text = "(but not out of options)"
 horizontal_alignment = 1
 
 [node name="ButtonsContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer"]
-custom_minimum_size = Vector2(600, 400)
+custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
 theme = ExtResource("1_epd2t")
 theme_override_constants/separation = 60
 alignment = 1
@@ -100,17 +110,22 @@ alignment = 2
 
 [node name="Author" type="Label" parent="CanvasLayer/Control/MarginContainer/CreditsContainer"]
 layout_mode = 2
+theme_override_constants/outline_size = 64
 text = "A game by pablopenna
 "
 
 [node name="Music" type="LinkButton" parent="CanvasLayer/Control/MarginContainer/CreditsContainer"]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 64
 button_mask = 7
 text = "Music by PunchDeck"
 uri = "https://punchdeck.bandcamp.com/"
 
 [node name="Font" type="LinkButton" parent="CanvasLayer/Control/MarginContainer/CreditsContainer"]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 64
 text = "Font by datagoblin"
 uri = "https://datagoblin.itch.io/monogram"
 
