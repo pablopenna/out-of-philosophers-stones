@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dtut44ga4w8bw"]
+[gd_scene load_steps=9 format=3 uid="uid://dtut44ga4w8bw"]
 
 [ext_resource type="Theme" uid="uid://jfuat3dv2f8r" path="res://other_resources/oops_theme.tres" id="1_epd2t"]
 [ext_resource type="Script" path="res://scenes/levels/main_menu/exit_button.gd" id="2_p4efe"]
 [ext_resource type="Script" path="res://scenes/levels/main_menu/start_game_button.gd" id="2_ulth1"]
-[ext_resource type="Texture2D" uid="uid://d22g0g27ri7gh" path="res://art/cover_small.png" id="3_fged6"]
 [ext_resource type="PackedScene" uid="uid://cgr1cp3u4fqks" path="res://scenes/levels/main.tscn" id="3_mslpb"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_y1dat"]
@@ -33,43 +32,87 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_epd2t")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+[node name="TextureRect" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 2
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_fged6")
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -162.0
-offset_right = 250.0
-offset_bottom = 44.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="TitleContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Title" type="Label" parent="CanvasLayer/Control/MarginContainer/TitleContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 164
+text = "Out Of Philosopher's Stones"
+uppercase = true
+
+[node name="Title2" type="Label" parent="CanvasLayer/Control/MarginContainer/TitleContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 100
+text = "(but not out of options)"
+horizontal_alignment = 1
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer"]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme = ExtResource("1_epd2t")
+theme_override_constants/separation = 60
 alignment = 1
 
-[node name="StartGame" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="StartGame" type="Button" parent="CanvasLayer/Control/MarginContainer/ButtonsContainer"]
 layout_mode = 2
 shortcut = SubResource("Shortcut_xam7a")
 text = "Start Game"
 script = ExtResource("2_ulth1")
 scene_to_load = ExtResource("3_mslpb")
 
-[node name="Exit" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="Exit" type="Button" parent="CanvasLayer/Control/MarginContainer/ButtonsContainer"]
 layout_mode = 2
 shortcut = SubResource("Shortcut_iu3rr")
 text = "Exit"
 script = ExtResource("2_p4efe")
 
-[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/StartGame" to="CanvasLayer/Control/VBoxContainer/StartGame" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/Exit" to="CanvasLayer/Control/VBoxContainer/Exit" method="_on_pressed"]
+[node name="CreditsContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+alignment = 2
+
+[node name="Author" type="Label" parent="CanvasLayer/Control/MarginContainer/CreditsContainer"]
+layout_mode = 2
+text = "A game by pablopenna
+"
+
+[node name="Music" type="LinkButton" parent="CanvasLayer/Control/MarginContainer/CreditsContainer"]
+layout_mode = 2
+button_mask = 7
+text = "Music by PunchDeck"
+uri = "https://punchdeck.bandcamp.com/"
+
+[node name="Font" type="LinkButton" parent="CanvasLayer/Control/MarginContainer/CreditsContainer"]
+layout_mode = 2
+text = "Font by datagoblin"
+uri = "https://datagoblin.itch.io/monogram"
+
+[connection signal="pressed" from="CanvasLayer/Control/MarginContainer/ButtonsContainer/StartGame" to="CanvasLayer/Control/MarginContainer/ButtonsContainer/StartGame" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/MarginContainer/ButtonsContainer/Exit" to="CanvasLayer/Control/MarginContainer/ButtonsContainer/Exit" method="_on_pressed"]
