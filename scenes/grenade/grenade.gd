@@ -6,8 +6,10 @@ var initial_position: Vector2
 var intermediate_parabole_point: Vector2
 var elapsed_time: float
 
-const height_of_intermediate_point: float = 100
-const speed: float = 0.8
+@export var height_of_intermediate_point: float = 100
+@export var speed: float = 2
+@export var explosion_damage: int = 20
+@export var explosion_scene: PackedScene
 
 func _ready() -> void:
 	super._ready() # Very important
@@ -52,6 +54,8 @@ func _process_elapsed_time(delta: float) -> void:
 	elapsed_time = min(elapsed_time, 1.0)
 
 func _explode() -> void:
-	self.enable()
-	await get_tree().create_timer(1.0).timeout # Need to wait before destroying. If not hurtbox might not be triggered.
+	var explosion: Explosion = explosion_scene.instantiate() as Explosion
+	explosion.global_position = global_position
+	explosion.damage = 20
+	AddToTreeUtils.add_mix_to_tree(explosion)
 	call_deferred("queue_free")

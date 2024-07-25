@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://da3hmt6n8bynn"]
+
+[ext_resource type="Script" path="res://scenes/explosion/explosion.gd" id="1_dhjlj"]
+[ext_resource type="Texture2D" uid="uid://cqlsmba6trxvh" path="res://art/lateralexplosion.png" id="2_ixthm"]
+[ext_resource type="Animation" uid="uid://cw0lk4bsuuqye" path="res://scenes/grenade/default_animation.res" id="3_ypbsj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u30ve"]
+radius = 30.0167
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vje5r"]
+_data = {
+"default": ExtResource("3_ypbsj")
+}
+
+[node name="Explosion" type="Area2D" node_paths=PackedStringArray("animation_player")]
+position = Vector2(102, 76)
+collision_layer = 0
+collision_mask = 128
+script = ExtResource("1_dhjlj")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -12)
+shape = SubResource("CircleShape2D_u30ve")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+scale = Vector2(2, 2)
+texture = ExtResource("2_ixthm")
+hframes = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vje5r")
+}
