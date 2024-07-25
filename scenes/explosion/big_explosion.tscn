@@ -5,7 +5,7 @@
 [ext_resource type="Animation" uid="uid://cw0lk4bsuuqye" path="res://scenes/grenade/default_animation.res" id="3_wu5gx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u30ve"]
-radius = 67.0
+radius = 100.0
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vje5r"]
 _data = {
