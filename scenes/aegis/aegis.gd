@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var animation_player: AnimationPlayer
+@export var stun_duration: float = 5
 
 func _ready() -> void:
 	_play_animations()
@@ -23,4 +24,4 @@ func _stun_enemies() -> void:
 	for body: PhysicsBody2D in get_overlapping_bodies():
 		var enemy: Enemy = body as Enemy
 		if enemy != null:
-			enemy.stun(1)
+			enemy.stun(stun_duration)
