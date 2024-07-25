@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsw6i43hbng2m"]
+
+[ext_resource type="Script" path="res://scenes/projectile/obus/obus.gd" id="1_d2dqj"]
+[ext_resource type="PackedScene" uid="uid://44wl7yj225ge" path="res://scenes/explosion/big_explosion.tscn" id="2_34qo8"]
+[ext_resource type="Texture2D" uid="uid://6w5mivgs5igh" path="res://art/obus.png" id="2_dgy0b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wiad0"]
+radius = 20.0
+
+[node name="Obus" type="Area2D" node_paths=PackedStringArray("sprite2D")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_d2dqj")
+sprite2D = NodePath("Sprite2D")
+explosion_scene = ExtResource("2_34qo8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+scale = Vector2(2, 2)
+texture = ExtResource("2_dgy0b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wiad0")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -14,11 +14,9 @@ position = Vector2(376, 118)
 
 [node name="Ingredient" parent="." instance=ExtResource("3_3sw03")]
 position = Vector2(139, 180)
-type = 1
 
 [node name="Ingredient2" parent="." instance=ExtResource("3_3sw03")]
 position = Vector2(166, 179)
-type = 1
 
 [node name="Ingredient3" parent="." instance=ExtResource("3_3sw03")]
 position = Vector2(193, 182)
@@ -30,8 +28,8 @@ type = 1
 
 [node name="Ingredient5" parent="." instance=ExtResource("3_3sw03")]
 position = Vector2(257, 178)
-type = 1
+type = 2
 
 [node name="Ingredient6" parent="." instance=ExtResource("3_3sw03")]
 position = Vector2(281, 174)
-type = 1
+type = 2
