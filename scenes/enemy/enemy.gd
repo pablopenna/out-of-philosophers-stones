@@ -1,14 +1,16 @@
 class_name Enemy extends Entity
 
-const move_speed: int = 300
+var move_speed: int # Set by factory
+var direction: Vector2 # Set by factory
+
 @export var animation_player: AnimationPlayer
 @export var hp_manager: HealthPointsManager
 @export var ingredient_factory: IngredientFactory
+@export var state_machine: StateMachine
 
 signal died
 
 func _ready() -> void:
-	animation_player.play("Enemy/idle")
 	hp_manager.health_zeroed.connect(_on_died)
 
 func _on_died() -> void:
@@ -18,3 +20,12 @@ func _on_died() -> void:
 	GlobalEvents.enemy_killed.emit()
 	
 	queue_free()
+
+func stun(duration_in_seconds: int) -> void:
+	state_machine.change_to_state(
+		"stunned", 
+		{
+			"duration": duration_in_seconds, 
+			"previous_state": state_machine.current_state.state_name
+		}
+	)

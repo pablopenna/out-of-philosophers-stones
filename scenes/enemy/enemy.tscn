@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_ia8fh"]
 [ext_resource type="Texture2D" uid="uid://byjnrfygc86ly" path="res://art/enemy_white_outline.png" id="2_8b7d0"]
 [ext_resource type="Script" path="res://scenes/common/state_machine.gd" id="3_orv0g"]
-[ext_resource type="Script" path="res://scenes/enemy/states/idle.gd" id="4_374nb"]
 [ext_resource type="Script" path="res://scenes/enemy/states/shoot.gd" id="5_fgmeb"]
 [ext_resource type="PackedScene" uid="uid://bvhpvjcuqvn16" path="res://scenes/hurtbox/hurtbox.tscn" id="5_qtfyk"]
+[ext_resource type="Script" path="res://scenes/enemy/states/stunned.gd" id="6_44mu3"]
 [ext_resource type="PackedScene" uid="uid://bivwencvg08tj" path="res://scenes/hp_manager/health_points_manager.tscn" id="6_o5h45"]
 [ext_resource type="PackedScene" uid="uid://b8yls0byl10aq" path="res://scenes/projectile/projectile_shooter.tscn" id="7_q66ql"]
 [ext_resource type="Script" path="res://scenes/enemy/pattern_shooter.gd" id="8_hgaiu"]
@@ -38,7 +38,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_dpagm"]
 radius = 16.0312
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("animation_player", "hp_manager", "ingredient_factory")]
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("animation_player", "hp_manager", "ingredient_factory", "state_machine")]
 collision_layer = 4
 collision_mask = 0
 motion_mode = 1
@@ -47,6 +47,7 @@ script = ExtResource("1_ia8fh")
 animation_player = NodePath("AnimationPlayer")
 hp_manager = NodePath("HealthPointsManager")
 ingredient_factory = NodePath("IngredientFactory")
+state_machine = NodePath("StateMachine")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 2.5)
@@ -67,16 +68,18 @@ script = ExtResource("3_orv0g")
 initial_state = NodePath("Shoot")
 managed_node = NodePath("..")
 
-[node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource("4_374nb")
-
-[node name="Shoot" type="Node" parent="StateMachine" node_paths=PackedStringArray("pattern_shooter", "timer")]
+[node name="Shoot" type="Node" parent="StateMachine" node_paths=PackedStringArray("animation_player", "pattern_shooter", "timer")]
 script = ExtResource("5_fgmeb")
+animation_player = NodePath("../../AnimationPlayer")
 pattern_shooter = NodePath("../../PatternShooter")
 timer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="StateMachine/Shoot"]
 autostart = true
+
+[node name="Stunned" type="Node" parent="StateMachine" node_paths=PackedStringArray("animation_player")]
+script = ExtResource("6_44mu3")
+animation_player = NodePath("../../AnimationPlayer")
 
 [node name="Hurtbox" parent="." instance=ExtResource("5_qtfyk")]
 collision_layer = 128
