@@ -7,7 +7,7 @@ var intermediate_parabole_point: Vector2
 var elapsed_time: float
 
 @export var height_of_intermediate_point: float = 100
-@export var speed: float = 2
+@export var speed: float = 3
 @export var explosion_damage: int = 20
 @export var explosion_scene: PackedScene
 

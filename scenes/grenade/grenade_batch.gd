@@ -6,7 +6,7 @@ const FULL_TURN: float = 2*PI
 @export var initial_number_of_grenades: int = 6
 @export var number_of_grenades_delta: int = 2
 @export var number_of_volleys: int = 5
-@export var delay_between_volleys: float = 0.2
+@export var delay_between_volleys: float = 0.1
 
 @export var grenade_scene: PackedScene
 
