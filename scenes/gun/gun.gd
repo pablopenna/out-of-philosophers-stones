@@ -1,12 +1,14 @@
-extends Node2D
+class_name Gun extends Node2D
 
+@export var bullet_speed: int = 1000
+@export var bullet_damage: int = 3
 @export var projectile_shooter: ProjectileShooter
-@export var bullet_speed: int = 100
-@export var bullet_damage: int = 1
 @export var bullet_creation_point: Node2D
+@export var sprite: Sprite2D
 @export_flags_2d_physics var projectile_scanned_layer: int
 @export_flags_2d_physics var projectile_layer: int
-@export var sprite: Sprite2D
+
+signal shot
 
 func _ready() -> void:
 	projectile_shooter.projectile_scanned_layer = projectile_scanned_layer
@@ -32,3 +34,4 @@ func _shoot() -> void:
 	var mouse_position: Vector2 = get_global_mouse_position()
 	var direction_to_mouse: Vector2 = global_position.direction_to(mouse_position)
 	projectile_shooter.shoot(bullet_creation_point.global_position, direction_to_mouse, bullet_speed, bullet_damage)
+	shot.emit()

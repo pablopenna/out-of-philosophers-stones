@@ -1,14 +1,14 @@
 [gd_scene load_steps=6 format=3 uid="uid://dra0jid47wmah"]
 
 [ext_resource type="Script" path="res://scenes/alchemy_ingredient/mixer/ingredient_mixer.gd" id="1_05paw"]
-[ext_resource type="PackedScene" uid="uid://bf8w8c0v5afmv" path="res://scenes/gun/gun.tscn" id="2_5y6ri"]
+[ext_resource type="PackedScene" uid="uid://fhgk1c5aq827" path="res://scenes/gun/gun_from_mix/gun_from_mix.tscn" id="2_vnof7"]
 [ext_resource type="PackedScene" uid="uid://bmjunmmohggii" path="res://scenes/bazooka/bazooka.tscn" id="3_61f65"]
 [ext_resource type="PackedScene" uid="uid://bs0qnuwj1h2cm" path="res://scenes/aegis/aegis.tscn" id="4_m2sol"]
 [ext_resource type="PackedScene" uid="uid://g0u0ntw7nfwq" path="res://scenes/grenade/grenade_batch.tscn" id="5_nc2uf"]
 
 [node name="IngredientMixer" type="Node2D"]
 script = ExtResource("1_05paw")
-gun_scene = ExtResource("2_5y6ri")
+gun_scene = ExtResource("2_vnof7")
 bazooka_scene = ExtResource("3_61f65")
 aegis_scene = ExtResource("4_m2sol")
 grenade_batch_scene = ExtResource("5_nc2uf")

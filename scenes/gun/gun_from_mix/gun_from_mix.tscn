@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://fhgk1c5aq827"]
+
+[ext_resource type="Script" path="res://scenes/gun/gun_from_mix/gun_from_mix.gd" id="1_6kusa"]
+[ext_resource type="Texture2D" uid="uid://rn6jwpxuyxt4" path="res://art/gun.png" id="2_qgu1a"]
+[ext_resource type="PackedScene" uid="uid://b8yls0byl10aq" path="res://scenes/projectile/projectile_shooter.tscn" id="3_s81rb"]
+
+[node name="GunFromMix" type="Node2D" node_paths=PackedStringArray("projectile_shooter", "bullet_creation_point", "sprite")]
+script = ExtResource("1_6kusa")
+projectile_shooter = NodePath("ProjectileShooter")
+bullet_creation_point = NodePath("BulletCreationPoint")
+sprite = NodePath("Sprite2D")
+projectile_scanned_layer = 128
+projectile_layer = 16
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(25, 2)
+texture = ExtResource("2_qgu1a")
+metadata/_edit_lock_ = true
+
+[node name="ProjectileShooter" parent="." instance=ExtResource("3_s81rb")]
+
+[node name="BulletCreationPoint" type="Node2D" parent="."]
+position = Vector2(35, 0)

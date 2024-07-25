@@ -7,12 +7,10 @@
 [node name="Gun" type="Node2D" node_paths=PackedStringArray("projectile_shooter", "bullet_creation_point", "sprite")]
 script = ExtResource("1_u7sx3")
 projectile_shooter = NodePath("ProjectileShooter")
-bullet_speed = 1000
-bullet_damage = 3
 bullet_creation_point = NodePath("BulletCreationPoint")
+sprite = NodePath("Sprite2D")
 projectile_scanned_layer = 128
 projectile_layer = 16
-sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(25, 2)
