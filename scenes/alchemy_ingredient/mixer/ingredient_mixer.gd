@@ -26,6 +26,9 @@ func _mix_ingredients() -> void:
 	var mix: Node2D = mix_scene.instantiate()
 	mix.global_position = global_position
 	AddToTreeUtils.add_mix_to_tree(mix)
+	# Remove fused ingredients from game
+	first.call_deferred("queue_free")
+	second.call_deferred("queue_free")
 
 func _get_mixing_ingredients_result(
 	first_type: AlchemyIngredient.IngredientType, 
