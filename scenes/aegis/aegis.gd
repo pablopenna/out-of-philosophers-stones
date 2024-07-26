@@ -3,6 +3,8 @@ extends Area2D
 @export var animation_player: AnimationPlayer
 @export var stun_duration: float = 5
 
+signal triggered
+
 func _ready() -> void:
 	_play_animations()
 
@@ -11,6 +13,7 @@ func _play_animations() -> void:
 
 # Call through animation
 func trigger_effect() -> void:
+	triggered.emit()
 	_destroy_bullets()
 	_stun_enemies()
 

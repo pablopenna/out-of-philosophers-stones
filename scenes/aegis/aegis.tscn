@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bs0qnuwj1h2cm"]
+[gd_scene load_steps=8 format=3 uid="uid://bs0qnuwj1h2cm"]
 
 [ext_resource type="Script" path="res://scenes/aegis/aegis.gd" id="1_g22tg"]
 [ext_resource type="Texture2D" uid="uid://ljaomwrspqgo" path="res://art/shield.png" id="2_2k5ce"]
+[ext_resource type="Script" path="res://scenes/aegis/sound.gd" id="3_coab5"]
+[ext_resource type="AudioStream" uid="uid://6oc0ipp3xq8i" path="res://sounds/aegis.ogg" id="3_q2222"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_28i80"]
 radius = 400.0
@@ -73,3 +75,9 @@ libraries = {
 "": SubResource("AnimationLibrary_23csn")
 }
 autoplay = "default"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_q2222")
+script = ExtResource("3_coab5")
+
+[connection signal="triggered" from="." to="AudioStreamPlayer" method="_on_aegis_triggered"]
