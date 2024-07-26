@@ -34,15 +34,10 @@ target = NodePath("../Player")
 
 [node name="Background" type="ColorRect" parent="Camera2D"]
 z_index = -1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -500.0
-offset_top = -300.0
-offset_right = 1500.0
-offset_bottom = 1700.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
 color = Color(0, 0, 0, 1)
 
 [node name="Floor" type="Sprite2D" parent="."]
