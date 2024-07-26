@@ -18,10 +18,6 @@ func _process(_delta: float) -> void:
 	var value_for_shaders: float = _magic_value_between_0_and_1(closest_distance)
 	_provide_param_to_sprite_shaders(value_for_shaders)
 	
-	#print("MAX ", MAX_DISTANCE)
-	#print("closest dist ", closest_distance)
-	#print("closest value ", value_for_shaders)
-	
 func _provide_param_to_sprite_shaders(param_value: float) -> void:
 	for sprite: Sprite2D in sprites_to_provide_param_to_shader:
 		(sprite.material as ShaderMaterial).set_shader_parameter("intensity", param_value)

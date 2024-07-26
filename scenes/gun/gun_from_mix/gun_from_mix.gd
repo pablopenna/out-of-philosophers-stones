@@ -1,6 +1,6 @@
 extends Gun
 
-@export var number_of_shots_before_destroy: int = 10
+@export var number_of_shots_before_destroy: int = 20
 var shots_shot: int
 
 func _ready():

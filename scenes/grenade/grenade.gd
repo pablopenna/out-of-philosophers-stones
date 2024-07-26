@@ -8,7 +8,7 @@ var elapsed_time: float
 
 @export var height_of_intermediate_point: float = 100
 @export var speed: float = 3
-@export var explosion_damage: int = 20
+@export var explosion_damage: int = 5
 @export var explosion_scene: PackedScene
 
 func _ready() -> void:
@@ -56,6 +56,6 @@ func _process_elapsed_time(delta: float) -> void:
 func _explode() -> void:
 	var explosion: Explosion = explosion_scene.instantiate() as Explosion
 	explosion.global_position = global_position
-	explosion.damage = 20
+	explosion.damage = explosion_damage
 	AddToTreeUtils.add_mix_to_tree(explosion)
 	call_deferred("queue_free")

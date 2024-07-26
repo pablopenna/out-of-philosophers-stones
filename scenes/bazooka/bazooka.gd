@@ -2,7 +2,7 @@ extends Node2D
 
 var bullet_initial_speed: int = 750
 var bullet_acceleration: int = 750
-var bullet_damage: int = 100
+var bullet_damage: int = 50
 var shots_before_destroy: int = 1
 var times_shot: int
 var bullets_shot: Array[Projectile]
