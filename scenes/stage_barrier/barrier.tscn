@@ -1,20 +1,41 @@
 [gd_scene load_steps=9 format=3 uid="uid://dc7lx67er6l06"]
 
-[ext_resource type="Texture2D" uid="uid://calm226i0h3bn" path="res://art/barrier.png" id="1_y2td7"]
 [ext_resource type="Script" path="res://scenes/stage_barrier/spawner.gd" id="2_d0q51"]
+[ext_resource type="Texture2D" uid="uid://5313k6xecq47" path="res://art/barrierchunk_a.png" id="2_j4xtn"]
+[ext_resource type="Texture2D" uid="uid://bn1i2k5n5xvd8" path="res://art/barrierchunk_b.png" id="3_7g1el"]
 [ext_resource type="PackedScene" uid="uid://ca6023cmew22i" path="res://scenes/enemy/enemy.tscn" id="3_e7iby"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_phrsa"]
-size = Vector2(1366, 42)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tjdwr"]
+texture = ExtResource("2_j4xtn")
+texture_region_size = Vector2i(32, 32)
+0:0/animation_columns = 5
+0:0/animation_frame_0/duration = 0.2
+0:0/animation_frame_1/duration = 0.2
+0:0/animation_frame_2/duration = 0.2
+0:0/animation_frame_3/duration = 0.2
+0:0/animation_frame_4/duration = 0.2
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xbngu"]
-size = Vector2(1366, 46)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s6d8u"]
+texture = ExtResource("3_7g1el")
+texture_region_size = Vector2i(32, 32)
+0:0/animation_columns = 2
+0:0/animation_frame_0/duration = 0.2
+0:0/animation_frame_1/duration = 0.2
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x2i6b"]
-size = Vector2(52, 768)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_j74rb"]
-size = Vector2(52, 768)
+[sub_resource type="TileSet" id="TileSet_w4551"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+sources/1 = SubResource("TileSetAtlasSource_tjdwr")
+sources/2 = SubResource("TileSetAtlasSource_s6d8u")
 
 [sub_resource type="Curve2D" id="Curve2D_3f3hp"]
 _data = {
@@ -22,28 +43,12 @@ _data = {
 }
 point_count = 5
 
-[node name="Barrier" type="StaticBody2D"]
-collision_mask = 0
+[node name="Barrier" type="Node"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(683, 384)
-texture = ExtResource("1_y2td7")
-
-[node name="Top" type="CollisionShape2D" parent="."]
-position = Vector2(683, 21)
-shape = SubResource("RectangleShape2D_phrsa")
-
-[node name="Bottom" type="CollisionShape2D" parent="."]
-position = Vector2(683, 745)
-shape = SubResource("RectangleShape2D_xbngu")
-
-[node name="Left" type="CollisionShape2D" parent="."]
-position = Vector2(26, 384)
-shape = SubResource("RectangleShape2D_x2i6b")
-
-[node name="Right" type="CollisionShape2D" parent="."]
-position = Vector2(1340, 384)
-shape = SubResource("RectangleShape2D_j74rb")
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_w4551")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 1, 0, 65536, 1, 0, 131072, 2, 0, 196608, 2, 0, 262144, 2, 0, 327680, 1, 0, 393216, 1, 0, 458752, 2, 0, 524288, 1, 0, 589824, 1, 0, 655360, 2, 0, 720896, 2, 0, 786432, 2, 0, 851968, 2, 0, 917504, 2, 0, 983040, 2, 0, 1048576, 1, 0, 1114112, 1, 0, 1179648, 2, 0, 1245184, 2, 0, 1310720, 1, 0, 1376256, 2, 0, 1441792, 1, 0, 1507328, 1, 0, 1, 2, 0, 65537, 1, 0, 131073, 2, 0, 196609, 1, 0, 262145, 1, 0, 327681, 2, 0, 393217, 1, 0, 458753, 1, 0, 524289, 1, 0, 589825, 2, 0, 655361, 2, 0, 720897, 1, 0, 786433, 1, 0, 851969, 2, 0, 917505, 2, 0, 983041, 1, 0, 1048577, 2, 0, 1114113, 1, 0, 1179649, 2, 0, 1245185, 1, 0, 1310721, 1, 0, 1376257, 1, 0, 1441793, 2, 0, 1507329, 1, 0, 1441794, 2, 0, 1507330, 1, 0, 1441795, 1, 0, 1507331, 1, 0, 1441796, 2, 0, 1507332, 1, 0, 1441797, 2, 0, 1507333, 1, 0, 1441798, 1, 0, 1507334, 2, 0, 1441799, 2, 0, 1507335, 1, 0, 1441800, 2, 0, 1507336, 2, 0, 1441801, 1, 0, 1507337, 2, 0, 1441802, 1, 0, 1507338, 2, 0, 1441803, 2, 0, 1507339, 1, 0, 1441804, 1, 0, 1507340, 1, 0, 1441805, 1, 0, 1507341, 1, 0, 1441806, 1, 0, 1507342, 1, 0, 1441807, 1, 0, 1507343, 1, 0, 1441808, 2, 0, 1507344, 2, 0, 1441809, 2, 0, 1507345, 1, 0, 1441810, 1, 0, 1507346, 2, 0, 1441811, 2, 0, 1507347, 1, 0, 1441812, 1, 0, 1507348, 1, 0, 1441813, 2, 0, 1507349, 1, 0, 1441814, 2, 0, 1507350, 1, 0, 1441815, 2, 0, 1507351, 1, 0, 1441816, 1, 0, 1507352, 1, 0, 1441817, 1, 0, 1507353, 2, 0, 1441818, 1, 0, 1507354, 1, 0, 1441819, 2, 0, 1507355, 2, 0, 1441820, 1, 0, 1507356, 1, 0, 1441821, 1, 0, 1507357, 2, 0, 1441822, 1, 0, 1507358, 2, 0, 1441823, 1, 0, 1507359, 2, 0, 1441824, 1, 0, 1507360, 1, 0, 1441825, 2, 0, 1507361, 2, 0, 1441826, 1, 0, 1507362, 1, 0, 1441827, 2, 0, 1507363, 1, 0, 1441828, 1, 0, 1507364, 2, 0, 1441829, 1, 0, 1507365, 2, 0, 1441830, 1, 0, 1507366, 1, 0, 1441831, 1, 0, 1507367, 1, 0, 1441832, 1, 0, 1507368, 1, 0, 1441833, 2, 0, 1507369, 2, 0, 1441834, 1, 0, 1507370, 1, 0, 40, 1, 0, 65576, 1, 0, 131112, 1, 0, 196648, 2, 0, 262184, 2, 0, 327720, 1, 0, 393256, 1, 0, 458792, 2, 0, 524328, 1, 0, 589864, 1, 0, 655400, 2, 0, 720936, 2, 0, 786472, 1, 0, 852008, 1, 0, 917544, 2, 0, 983080, 1, 0, 1048616, 2, 0, 1114152, 1, 0, 1179688, 2, 0, 1245224, 2, 0, 1310760, 2, 0, 1376296, 1, 0, 41, 2, 0, 65577, 1, 0, 131113, 1, 0, 196649, 2, 0, 262185, 2, 0, 327721, 1, 0, 393257, 2, 0, 458793, 2, 0, 524329, 2, 0, 589865, 1, 0, 655401, 2, 0, 720937, 2, 0, 786473, 2, 0, 852009, 2, 0, 917545, 2, 0, 983081, 2, 0, 1048617, 1, 0, 1114153, 2, 0, 1179689, 2, 0, 1245225, 2, 0, 1310761, 1, 0, 1376297, 1, 0, 42, 2, 0, 65578, 2, 0, 131114, 2, 0, 196650, 1, 0, 262186, 1, 0, 327722, 2, 0, 393258, 2, 0, 458794, 2, 0, 524330, 2, 0, 589866, 1, 0, 655402, 2, 0, 720938, 2, 0, 786474, 2, 0, 852010, 2, 0, 917546, 1, 0, 983082, 2, 0, 1048618, 1, 0, 1114154, 1, 0, 1179690, 2, 0, 1245226, 2, 0, 1310762, 1, 0, 1376298, 2, 0, -65536, 1, 0, -65535, 2, 0, -65534, 2, 0, 2, 2, 0, -65533, 1, 0, 3, 2, 0, -65532, 2, 0, 4, 1, 0, -65531, 2, 0, 5, 2, 0, -65530, 1, 0, 6, 1, 0, -65529, 1, 0, 7, 1, 0, -65528, 2, 0, 8, 1, 0, -65527, 1, 0, 9, 1, 0, -65526, 1, 0, 10, 1, 0, -65525, 2, 0, 11, 2, 0, -65524, 1, 0, 12, 1, 0, -65523, 2, 0, 13, 2, 0, -65522, 2, 0, 14, 2, 0, -65521, 1, 0, 15, 1, 0, -65520, 2, 0, 16, 2, 0, -65519, 1, 0, 17, 1, 0, -65518, 1, 0, 18, 1, 0, -65517, 2, 0, 19, 1, 0, -65516, 2, 0, 20, 1, 0, -65515, 2, 0, 21, 1, 0, -65514, 1, 0, 22, 1, 0, -65513, 1, 0, 23, 1, 0, -65512, 2, 0, 24, 2, 0, -65511, 2, 0, 25, 2, 0, -65510, 1, 0, 26, 1, 0, -65509, 2, 0, 27, 1, 0, -65508, 1, 0, 28, 2, 0, -65507, 1, 0, 29, 1, 0, -65506, 1, 0, 30, 2, 0, -65505, 1, 0, 31, 1, 0, -65504, 2, 0, 32, 1, 0, -65503, 1, 0, 33, 2, 0, -65502, 1, 0, 34, 1, 0, -65501, 2, 0, 35, 1, 0, -65500, 1, 0, 36, 1, 0, -65499, 2, 0, 37, 2, 0, -65498, 1, 0, 38, 2, 0, -65497, 1, 0, 39, 2, 0, -65496, 1, 0, -65495, 1, 0, -65494, 1, 0)
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_3f3hp")
