@@ -11,8 +11,8 @@ const FULL_TURN: float = 2*PI
 @export var grenade_scene: PackedScene
 
 func _ready() -> void:
-	var throw_distance = initial_throw_distance
-	var number_of_grenades = initial_number_of_grenades
+	var throw_distance: int = initial_throw_distance
+	var number_of_grenades: int = initial_number_of_grenades
 	for volley:int in range(number_of_volleys):
 		shoot_grenades(number_of_grenades, throw_distance)
 		throw_distance += throw_distance_delta

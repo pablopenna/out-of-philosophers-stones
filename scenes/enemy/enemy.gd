@@ -21,7 +21,7 @@ func _on_died() -> void:
 	
 	queue_free()
 
-func stun(duration_in_seconds: int) -> void:
+func stun(duration_in_seconds: float) -> void:
 	state_machine.change_to_state(
 		"stunned", 
 		{

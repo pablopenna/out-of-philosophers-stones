@@ -1,6 +1,6 @@
 class_name Explosion extends Hitbox
 
-var damage: int = 100
+var damage: int # to be set by instantiator
 @export var animation_player: AnimationPlayer
 
 func _ready() -> void:
@@ -8,6 +8,7 @@ func _ready() -> void:
 	self.hitbox_data = HitboxData.new()
 	self.hitbox_data.damage = damage
 	animation_player.play("default")
+	GlobalEvents.shake_screen.emit(damage)
 
 func _explosion_start() -> void:
 	self.enable()
