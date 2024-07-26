@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dtut44ga4w8bw"]
+[gd_scene load_steps=12 format=3 uid="uid://dtut44ga4w8bw"]
 
 [ext_resource type="Theme" uid="uid://jfuat3dv2f8r" path="res://other_resources/oops_theme.tres" id="1_epd2t"]
 [ext_resource type="Script" path="res://scenes/levels/main_menu/add_random_decorations.gd" id="2_bv5mw"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scenes/levels/main_menu/start_game_button.gd" id="2_ulth1"]
 [ext_resource type="PackedScene" uid="uid://cgr1cp3u4fqks" path="res://scenes/levels/main.tscn" id="3_mslpb"]
 [ext_resource type="PackedScene" uid="uid://bv0gud85vx8it" path="res://scenes/levels/main_menu/floating_decoration.tscn" id="5_aptmo"]
+[ext_resource type="Script" path="res://scenes/levels/main_menu/toggle_fullscreen.gd" id="6_20iwa"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_y1dat"]
 device = -1
@@ -95,6 +96,11 @@ shortcut = SubResource("Shortcut_xam7a")
 text = "Start Game"
 script = ExtResource("2_ulth1")
 scene_to_load = ExtResource("3_mslpb")
+
+[node name="FullScreen" type="Button" parent="CanvasLayer/Control/MarginContainer/ButtonsContainer"]
+layout_mode = 2
+text = "Toggle Fullscreen"
+script = ExtResource("6_20iwa")
 
 [node name="Exit" type="Button" parent="CanvasLayer/Control/MarginContainer/ButtonsContainer"]
 layout_mode = 2
