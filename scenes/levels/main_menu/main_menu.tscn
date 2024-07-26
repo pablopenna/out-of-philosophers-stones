@@ -116,22 +116,34 @@ alignment = 2
 
 [node name="Author" type="Label" parent="CanvasLayer/Control/MarginContainer/CreditsContainer"]
 layout_mode = 2
-theme_override_constants/outline_size = 64
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/font_size = 48
 text = "A game by pablopenna
 "
 
 [node name="Music" type="LinkButton" parent="CanvasLayer/Control/MarginContainer/CreditsContainer"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 64
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/font_size = 48
 button_mask = 7
-text = "Music by PunchDeck"
+text = "Music adapted from PunchDeck"
 uri = "https://punchdeck.bandcamp.com/"
+
+[node name="Music2" type="LinkButton" parent="CanvasLayer/Control/MarginContainer/CreditsContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/font_size = 48
+button_mask = 7
+text = "under CreativeCommons"
+uri = "https://creativecommons.org/licenses/by/3.0/"
 
 [node name="Font" type="LinkButton" parent="CanvasLayer/Control/MarginContainer/CreditsContainer"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 64
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/font_size = 48
 text = "Font by datagoblin"
 uri = "https://datagoblin.itch.io/monogram"
 
