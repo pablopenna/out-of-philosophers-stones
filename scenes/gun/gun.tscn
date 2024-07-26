@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bf8w8c0v5afmv"]
+[gd_scene load_steps=6 format=3 uid="uid://bf8w8c0v5afmv"]
 
 [ext_resource type="Texture2D" uid="uid://rn6jwpxuyxt4" path="res://art/gun.png" id="1_1j4ea"]
 [ext_resource type="Script" path="res://scenes/gun/gun.gd" id="1_u7sx3"]
 [ext_resource type="PackedScene" uid="uid://b8yls0byl10aq" path="res://scenes/projectile/projectile_shooter.tscn" id="3_mr34k"]
+[ext_resource type="AudioStream" uid="uid://da0oyj4jr5tb6" path="res://sounds/shot_v3.ogg" id="4_i6tds"]
+[ext_resource type="Script" path="res://scenes/gun/play_sound.gd" id="5_k3y6t"]
 
 [node name="Gun" type="Node2D" node_paths=PackedStringArray("projectile_shooter", "bullet_creation_point", "sprite")]
 script = ExtResource("1_u7sx3")
@@ -21,3 +23,13 @@ metadata/_edit_lock_ = true
 
 [node name="BulletCreationPoint" type="Node2D" parent="."]
 position = Vector2(35, 0)
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_i6tds")
+volume_db = -10.0
+max_polyphony = 2
+script = ExtResource("5_k3y6t")
+max_pitch = 1.0
+min_pitch = 1.0
+
+[connection signal="shot" from="." to="Sound" method="_on_gun_shot"]

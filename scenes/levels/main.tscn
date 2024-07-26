@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cgr1cp3u4fqks"]
+[gd_scene load_steps=10 format=3 uid="uid://cgr1cp3u4fqks"]
 
 [ext_resource type="PackedScene" uid="uid://bb1aihwwoqf1r" path="res://scenes/ui/ui.tscn" id="1_74uvj"]
 [ext_resource type="Script" path="res://scenes/game_state/in-game-timer.gd" id="2_t6u5k"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://dc7lx67er6l06" path="res://scenes/stage_barrier/barrier.tscn" id="4_5j47n"]
 [ext_resource type="Script" path="res://scenes/destroy_anything_outside.gd" id="5_g2htw"]
 [ext_resource type="PackedScene" uid="uid://p143u0yu7cua" path="res://scenes/player/player.tscn" id="6_vws8d"]
-[ext_resource type="PackedScene" uid="uid://ca6023cmew22i" path="res://scenes/enemy/enemy.tscn" id="7_brfgc"]
 [ext_resource type="Script" path="res://scenes/camera.gd" id="8_j6305"]
 [ext_resource type="PackedScene" uid="uid://desj31vcxej0a" path="res://scenes/alchemy_ingredient/base/alchemy_ingredient.tscn" id="9_rj24q"]
 
@@ -57,9 +56,6 @@ shape = SubResource("RectangleShape2D_1glpr")
 
 [node name="Player" parent="." instance=ExtResource("6_vws8d")]
 position = Vector2(579, 316)
-
-[node name="Enemy" parent="." instance=ExtResource("7_brfgc")]
-position = Vector2(101, 96)
 
 [node name="Ingredient" parent="." instance=ExtResource("9_rj24q")]
 position = Vector2(557, 391)
