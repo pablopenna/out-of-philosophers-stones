@@ -10,3 +10,7 @@ signal shake_screen(intensity: float)
 signal player_acquired_ingredient(ingredientType: AlchemyIngredient.IngredientType)
 signal player_tossed_ingredient(ingredientType: AlchemyIngredient.IngredientType)
 signal ingredient_ready_to_mix(ingredient: AlchemyIngredient)
+
+# Music player
+signal play_track(track: GlobalMusicPlayer.Tracks)
+signal set_music_volume(volume: int)

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bqmygquc71bu4"
+path="res://.godot/imported/Punch Deck - Non-Euclidean Geometry.mp3-fc93d847df8aceb97aca419fa72f5fda.mp3str"
+
+[deps]
+
+source_file="res://music/Punch Deck - Non-Euclidean Geometry.mp3"
+dest_files=["res://.godot/imported/Punch Deck - Non-Euclidean Geometry.mp3-fc93d847df8aceb97aca419fa72f5fda.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

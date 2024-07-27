@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://m8b8pup4exct"
+path="res://.godot/imported/Punch Deck - Zen Garden II- Apocalypse.mp3-9f8e306874b52481d3d33bac5506a7f9.mp3str"
+
+[deps]
+
+source_file="res://music/Punch Deck - Zen Garden II- Apocalypse.mp3"
+dest_files=["res://.godot/imported/Punch Deck - Zen Garden II- Apocalypse.mp3-9f8e306874b52481d3d33bac5506a7f9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

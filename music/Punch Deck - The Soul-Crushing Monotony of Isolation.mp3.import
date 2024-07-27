@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://u8nwhethdmm2"
+path="res://.godot/imported/Punch Deck - The Soul-Crushing Monotony of Isolation.mp3-938b8c45b4c2eba0d8193322e7a0b8ea.mp3str"
+
+[deps]
+
+source_file="res://music/Punch Deck - The Soul-Crushing Monotony of Isolation.mp3"
+dest_files=["res://.godot/imported/Punch Deck - The Soul-Crushing Monotony of Isolation.mp3-938b8c45b4c2eba0d8193322e7a0b8ea.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

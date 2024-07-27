@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bepxtpavqim3w"
+path="res://.godot/imported/Punch Deck - Signal in the Noise.mp3-80240ff1602c28fb1049b7b7a4c83d75.mp3str"
+
+[deps]
+
+source_file="res://music/Punch Deck - Signal in the Noise.mp3"
+dest_files=["res://.godot/imported/Punch Deck - Signal in the Noise.mp3-80240ff1602c28fb1049b7b7a4c83d75.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

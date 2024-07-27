@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d1debgrjyydnb"
+path="res://.godot/imported/Punch Deck - DRAGON VS GOOSE- BATTLE OF THE CENTURY.mp3-d0d89f876c984599b3092cd1d357e2d0.mp3str"
+
+[deps]
+
+source_file="res://music/Punch Deck - DRAGON VS GOOSE- BATTLE OF THE CENTURY.mp3"
+dest_files=["res://.godot/imported/Punch Deck - DRAGON VS GOOSE- BATTLE OF THE CENTURY.mp3-d0d89f876c984599b3092cd1d357e2d0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
