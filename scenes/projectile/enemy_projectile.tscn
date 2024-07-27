@@ -1,0 +1,88 @@
+[gd_scene load_steps=13 format=3 uid="uid://cxvxquh343piv"]
+
+[ext_resource type="Script" path="res://scenes/projectile/projectile.gd" id="1_tghha"]
+[ext_resource type="Texture2D" uid="uid://dwi8xrfirr88p" path="res://art/bullet2.png" id="2_56x0i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gqcl"]
+atlas = ExtResource("2_56x0i")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14lgn"]
+atlas = ExtResource("2_56x0i")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yx4ar"]
+atlas = ExtResource("2_56x0i")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lu264"]
+atlas = ExtResource("2_56x0i")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78mpl"]
+atlas = ExtResource("2_56x0i")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqtni"]
+atlas = ExtResource("2_56x0i")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3wue"]
+atlas = ExtResource("2_56x0i")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxq2u"]
+atlas = ExtResource("2_56x0i")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7f6ge"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gqcl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14lgn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yx4ar")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lu264")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78mpl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqtni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3wue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxq2u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wiad0"]
+radius = 5.0
+
+[node name="EnemyProjectile" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_tghha")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_7f6ge")
+frame_progress = 0.317966
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wiad0")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

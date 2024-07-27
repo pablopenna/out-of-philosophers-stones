@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://ca6023cmew22i"]
+[gd_scene load_steps=17 format=3 uid="uid://ca6023cmew22i"]
 
 [ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_ia8fh"]
 [ext_resource type="Texture2D" uid="uid://byjnrfygc86ly" path="res://art/enemy_white_outline.png" id="2_8b7d0"]
+[ext_resource type="Script" path="res://scenes/enemy/enemy_sprite.gd" id="3_4qshi"]
 [ext_resource type="Script" path="res://scenes/common/state_machine.gd" id="3_orv0g"]
 [ext_resource type="Script" path="res://scenes/enemy/states/shoot.gd" id="5_fgmeb"]
 [ext_resource type="PackedScene" uid="uid://bvhpvjcuqvn16" path="res://scenes/hurtbox/hurtbox.tscn" id="5_qtfyk"]
@@ -9,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bivwencvg08tj" path="res://scenes/hp_manager/health_points_manager.tscn" id="6_o5h45"]
 [ext_resource type="PackedScene" uid="uid://b8yls0byl10aq" path="res://scenes/projectile/projectile_shooter.tscn" id="7_q66ql"]
 [ext_resource type="Script" path="res://scenes/enemy/pattern_shooter.gd" id="8_hgaiu"]
+[ext_resource type="PackedScene" uid="uid://cxvxquh343piv" path="res://scenes/projectile/enemy_projectile.tscn" id="9_8lfwd"]
 [ext_resource type="PackedScene" uid="uid://cegd3hhiafncc" path="res://scenes/alchemy_ingredient/factory/ingredient_factory.tscn" id="10_s1kt7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nhs8a"]
@@ -53,10 +55,12 @@ state_machine = NodePath("StateMachine")
 position = Vector2(-1, 2.5)
 shape = SubResource("RectangleShape2D_nhs8a")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("enemy")]
 texture = ExtResource("2_8b7d0")
 hframes = 5
 frame = 4
+script = ExtResource("3_4qshi")
+enemy = NodePath("..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -94,6 +98,7 @@ hurtbox = NodePath("../Hurtbox")
 health = 5
 
 [node name="ProjectileShooter" parent="." instance=ExtResource("7_q66ql")]
+projectileScene = ExtResource("9_8lfwd")
 projectile_scanned_layer = 32
 projectile_layer = 64
 
