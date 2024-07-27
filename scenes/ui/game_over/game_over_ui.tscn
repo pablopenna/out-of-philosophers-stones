@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scenes/common/button_load_scene.gd" id="4_wjpm3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rwn3g"]
-bg_color = Color(0, 0, 0, 0.784314)
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="InputEventKey" id="InputEventKey_55s2e"]
 device = -1
@@ -43,10 +43,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 100
-theme_override_constants/margin_bottom = 100
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
 
 [node name="Panel" type="Panel" parent="Control/MarginContainer"]
 layout_mode = 2
