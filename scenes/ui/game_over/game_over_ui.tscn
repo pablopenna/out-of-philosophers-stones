@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bdxwyie4plx0y"]
+[gd_scene load_steps=10 format=3 uid="uid://bdxwyie4plx0y"]
 
 [ext_resource type="Script" path="res://scenes/ui/game_over/game_over.gd" id="1_c5vnc"]
 [ext_resource type="Theme" uid="uid://jfuat3dv2f8r" path="res://other_resources/oops_theme.tres" id="1_cosxk"]
 [ext_resource type="Script" path="res://scenes/ui/game_over/score.gd" id="3_0nivb"]
-[ext_resource type="Script" path="res://scenes/ui/game_over/retry_button.gd" id="4_pgu5l"]
-[ext_resource type="Script" path="res://scenes/ui/game_over/main_menu_button.gd" id="5_chrq1"]
+[ext_resource type="Script" path="res://scenes/common/button_load_scene.gd" id="4_wjpm3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rwn3g"]
 bg_color = Color(0, 0, 0, 0.784314)
@@ -94,14 +93,14 @@ alignment = 1
 layout_mode = 2
 shortcut = SubResource("Shortcut_64tyi")
 text = "Retry (r)"
-script = ExtResource("4_pgu5l")
+script = ExtResource("4_wjpm3")
+scene_to_load = 1
 
 [node name="MainMenu" type="Button" parent="Control/MarginContainer/Panel/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 shortcut = SubResource("Shortcut_l01ls")
 text = "Main Menu (esc)"
-script = ExtResource("5_chrq1")
+script = ExtResource("4_wjpm3")
+scene_to_load = null
 
 [connection signal="set_score" from="." to="Control/MarginContainer/Panel/VBoxContainer/HBoxContainer/Score" method="_on_game_over_set_score"]
-[connection signal="pressed" from="Control/MarginContainer/Panel/VBoxContainer/VBoxContainer/Retry" to="Control/MarginContainer/Panel/VBoxContainer/VBoxContainer/Retry" method="_on_pressed"]
-[connection signal="pressed" from="Control/MarginContainer/Panel/VBoxContainer/VBoxContainer/MainMenu" to="Control/MarginContainer/Panel/VBoxContainer/VBoxContainer/MainMenu" method="_on_pressed"]

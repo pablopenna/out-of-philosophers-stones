@@ -5,6 +5,8 @@ var score: int
 const score_added_for_killed_enemy: int = 10
 const score_added_for_time_in_game_passed: int = 1
 
+var game_over_scene
+
 func _ready() -> void:
 	score = 0
 	GlobalEvents.enemy_killed.connect(_on_enemy_killed)
@@ -22,6 +24,4 @@ func _increase_score(increase: int) -> void:
 	GlobalEvents.score_updated.emit(score)
 	
 func _game_over() -> void:
-	GlobalEvents.show_gameover_screen.emit(score)
-	get_tree().change_scene_to_file.call_deferred("res://scenes/levels/game_over.tscn")
-	
+	SceneLoaderUtil.load_screen_to_scene(SceneLoaderUtil.LoadableScene.GAME_OVER, {"score": score})

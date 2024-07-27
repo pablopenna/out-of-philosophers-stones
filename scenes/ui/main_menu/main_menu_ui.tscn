@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://dvv0o50flnpd8"]
+[gd_scene load_steps=11 format=3 uid="uid://dvv0o50flnpd8"]
 
 [ext_resource type="Theme" uid="uid://jfuat3dv2f8r" path="res://other_resources/oops_theme.tres" id="1_wqbpr"]
 [ext_resource type="Script" path="res://scenes/ui/main_menu/add_random_decorations.gd" id="2_2y1nu"]
-[ext_resource type="PackedScene" uid="uid://bv0gud85vx8it" path="res://scenes/ui/main_menu/floating_decoration.tscn" id="3_rxy7x"]
-[ext_resource type="Script" path="res://scenes/ui/main_menu/start_game_button.gd" id="4_nahdr"]
-[ext_resource type="PackedScene" uid="uid://cgr1cp3u4fqks" path="res://scenes/levels/game.tscn" id="5_tm2d0"]
+[ext_resource type="PackedScene" uid="uid://bv0gud85vx8it" path="res://scenes/ui/floating_decoration.tscn" id="3_rxy7x"]
+[ext_resource type="Script" path="res://scenes/common/button_load_scene.gd" id="4_scx45"]
 [ext_resource type="Script" path="res://scenes/ui/main_menu/toggle_fullscreen.gd" id="6_k0xn6"]
 [ext_resource type="Script" path="res://scenes/ui/main_menu/exit_button.gd" id="7_c6tg2"]
 
@@ -92,8 +91,8 @@ alignment = 1
 layout_mode = 2
 shortcut = SubResource("Shortcut_xam7a")
 text = "Start Game"
-script = ExtResource("4_nahdr")
-scene_to_load = ExtResource("5_tm2d0")
+script = ExtResource("4_scx45")
+scene_to_load = 1
 
 [node name="FullScreen" type="Button" parent="Control/MarginContainer/ButtonsContainer"]
 layout_mode = 2
@@ -145,5 +144,4 @@ theme_override_font_sizes/font_size = 48
 text = "Font by datagoblin"
 uri = "https://datagoblin.itch.io/monogram"
 
-[connection signal="pressed" from="Control/MarginContainer/ButtonsContainer/StartGame" to="Control/MarginContainer/ButtonsContainer/StartGame" method="_on_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/ButtonsContainer/Exit" to="Control/MarginContainer/ButtonsContainer/Exit" method="_on_pressed"]

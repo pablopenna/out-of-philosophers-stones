@@ -91,7 +91,7 @@ shape = SubResource("CircleShape2D_wlbpc")
 
 [node name="HealthPointsManager" parent="." node_paths=PackedStringArray("hurtbox") instance=ExtResource("6_v44fv")]
 hurtbox = NodePath("../Hurtbox")
-health = 1
+health = 3
 
 [node name="HurtSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_rr7gj")
