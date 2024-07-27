@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cgr1cp3u4fqks"]
 
-[ext_resource type="PackedScene" uid="uid://bb1aihwwoqf1r" path="res://scenes/ui/ui.tscn" id="1_74uvj"]
+[ext_resource type="PackedScene" uid="uid://bb1aihwwoqf1r" path="res://scenes/ui/in_game_ui/in_game_ui.tscn" id="1_74uvj"]
 [ext_resource type="Script" path="res://scenes/game_state/in-game-timer.gd" id="2_t6u5k"]
 [ext_resource type="Texture2D" uid="uid://b565nqi88eb6f" path="res://art/background.png" id="3_344jd"]
 [ext_resource type="PackedScene" uid="uid://dc7lx67er6l06" path="res://scenes/stage_barrier/barrier.tscn" id="4_5j47n"]

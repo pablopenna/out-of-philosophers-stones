@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=3 uid="uid://bb1aihwwoqf1r"]
 
-[ext_resource type="LabelSettings" uid="uid://db1a0y17bcjrj" path="res://scenes/ui/score/score_label_settings.tres" id="1_ef70x"]
-[ext_resource type="Script" path="res://scenes/ui/score/show_score.gd" id="2_3j8mj"]
-[ext_resource type="Script" path="res://scenes/ui/hp/show_hp.gd" id="3_fr2qf"]
-[ext_resource type="PackedScene" uid="uid://dqk5kvhnr3qb2" path="res://scenes/ui/hp/ui_heart.tscn" id="4_l4m8o"]
-[ext_resource type="Texture2D" uid="uid://es7bxu6grpjc" path="res://art/hand.png" id="5_o3res"]
-[ext_resource type="Texture2D" uid="uid://dios16sab1e1w" path="res://art/bone.png" id="6_x455k"]
-[ext_resource type="Texture2D" uid="uid://cp4hv08ewgh08" path="res://art/eye.png" id="7_eserb"]
-[ext_resource type="Script" path="res://scenes/ui/ingredients/ingredient_counter.gd" id="7_r7s86"]
-[ext_resource type="LabelSettings" uid="uid://dkotbllaibpuw" path="res://scenes/ui/ingredients/ingredient_label_settings.tres" id="8_7h6is"]
+[ext_resource type="LabelSettings" uid="uid://db1a0y17bcjrj" path="res://scenes/ui/in_game_ui/score/score_label_settings.tres" id="1_4044v"]
+[ext_resource type="Script" path="res://scenes/ui/in_game_ui/score/show_score.gd" id="2_wv4wc"]
+[ext_resource type="Script" path="res://scenes/ui/in_game_ui/hp/show_hp.gd" id="3_xquru"]
+[ext_resource type="PackedScene" uid="uid://dqk5kvhnr3qb2" path="res://scenes/ui/in_game_ui/hp/ui_heart.tscn" id="4_56qvf"]
+[ext_resource type="Texture2D" uid="uid://es7bxu6grpjc" path="res://art/hand.png" id="5_8n5kh"]
+[ext_resource type="LabelSettings" uid="uid://dkotbllaibpuw" path="res://scenes/ui/in_game_ui/ingredients/ingredient_label_settings.tres" id="6_a32sd"]
+[ext_resource type="Script" path="res://scenes/ui/in_game_ui/ingredients/ingredient_counter.gd" id="7_flyxk"]
+[ext_resource type="Texture2D" uid="uid://dios16sab1e1w" path="res://art/bone.png" id="8_x3n8b"]
+[ext_resource type="Texture2D" uid="uid://cp4hv08ewgh08" path="res://art/eye.png" id="9_57cev"]
 
 [node name="UI" type="CanvasLayer"]
 
@@ -49,22 +49,22 @@ theme_override_constants/separation = 45
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Score:"
-label_settings = ExtResource("1_ef70x")
+label_settings = ExtResource("1_4044v")
 
 [node name="Score" type="Label" parent="Control/MarginContainer/Top/ScoreContainer"]
 layout_mode = 2
 text = "0
 "
-label_settings = ExtResource("1_ef70x")
-script = ExtResource("2_3j8mj")
+label_settings = ExtResource("1_4044v")
+script = ExtResource("2_wv4wc")
 
 [node name="LifeContainer" type="HBoxContainer" parent="Control/MarginContainer/Top"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_constants/separation = 10
-script = ExtResource("3_fr2qf")
-hp_ui_element_scene = ExtResource("4_l4m8o")
+script = ExtResource("3_xquru")
+hp_ui_element_scene = ExtResource("4_56qvf")
 player_hp = 3
 
 [node name="Bottom" type="VBoxContainer" parent="Control/MarginContainer"]
@@ -83,17 +83,17 @@ layout_mode = 2
 
 [node name="Hand" type="TextureRect" parent="Control/MarginContainer/Bottom/Ingredients/HandPanelContainer"]
 layout_mode = 2
-texture = ExtResource("5_o3res")
+texture = ExtResource("5_8n5kh")
 
 [node name="Label" type="Label" parent="Control/MarginContainer/Bottom/Ingredients/HandPanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 text = "0"
-label_settings = ExtResource("8_7h6is")
+label_settings = ExtResource("6_a32sd")
 horizontal_alignment = 1
 vertical_alignment = 2
-script = ExtResource("7_r7s86")
+script = ExtResource("7_flyxk")
 
 [node name="BonePanelContainer2" type="PanelContainer" parent="Control/MarginContainer/Bottom/Ingredients"]
 custom_minimum_size = Vector2(96, 96)
@@ -101,17 +101,17 @@ layout_mode = 2
 
 [node name="Bone" type="TextureRect" parent="Control/MarginContainer/Bottom/Ingredients/BonePanelContainer2"]
 layout_mode = 2
-texture = ExtResource("6_x455k")
+texture = ExtResource("8_x3n8b")
 
 [node name="Label" type="Label" parent="Control/MarginContainer/Bottom/Ingredients/BonePanelContainer2"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 text = "0"
-label_settings = ExtResource("8_7h6is")
+label_settings = ExtResource("6_a32sd")
 horizontal_alignment = 1
 vertical_alignment = 2
-script = ExtResource("7_r7s86")
+script = ExtResource("7_flyxk")
 tracked_ingredient_type = 2
 
 [node name="EyePanelContainer3" type="PanelContainer" parent="Control/MarginContainer/Bottom/Ingredients"]
@@ -120,15 +120,15 @@ layout_mode = 2
 
 [node name="Eye" type="TextureRect" parent="Control/MarginContainer/Bottom/Ingredients/EyePanelContainer3"]
 layout_mode = 2
-texture = ExtResource("7_eserb")
+texture = ExtResource("9_57cev")
 
 [node name="Label" type="Label" parent="Control/MarginContainer/Bottom/Ingredients/EyePanelContainer3"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 text = "0"
-label_settings = ExtResource("8_7h6is")
+label_settings = ExtResource("6_a32sd")
 horizontal_alignment = 1
 vertical_alignment = 2
-script = ExtResource("7_r7s86")
+script = ExtResource("7_flyxk")
 tracked_ingredient_type = 1
