@@ -12,10 +12,9 @@ var catalogue: Dictionary
 
 func _ready() -> void:
 	_init_catalogue()
-	GlobalEvents.play_track.connect(_play_track)
-	GlobalEvents.set_music_volume.connect(_play_track)
 	finished.connect(play) # loop
-	_play_track(Tracks.MAIN_MENU)
+	self.volume_db = -10
+	play_track(Tracks.MAIN_MENU)
 	
 func _init_catalogue() -> void:
 	catalogue = {
@@ -28,10 +27,7 @@ func _set_track(trackName: Tracks) -> void:
 	assert(track != null)
 	self.stream = catalogue[trackName]
 	
-func _play_track(trackName: Tracks) -> void:
+func play_track(trackName: Tracks) -> void:
 	_set_track(trackName)
 	play()
-	
-func _set_volume(volume: Tracks) -> void:
-	self.volume_db = volume
 	

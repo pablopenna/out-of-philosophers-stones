@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dvv0o50flnpd8"]
+[gd_scene load_steps=12 format=3 uid="uid://dvv0o50flnpd8"]
 
 [ext_resource type="Theme" uid="uid://jfuat3dv2f8r" path="res://other_resources/oops_theme.tres" id="1_wqbpr"]
 [ext_resource type="Script" path="res://scenes/ui/main_menu/add_random_decorations.gd" id="2_2y1nu"]
 [ext_resource type="PackedScene" uid="uid://bv0gud85vx8it" path="res://scenes/ui/floating_decoration.tscn" id="3_rxy7x"]
 [ext_resource type="Script" path="res://scenes/common/button_load_scene.gd" id="4_scx45"]
 [ext_resource type="Script" path="res://scenes/ui/main_menu/toggle_fullscreen.gd" id="6_k0xn6"]
+[ext_resource type="Script" path="res://scenes/ui/main_menu/mute_sound.gd" id="7_5lo5m"]
 [ext_resource type="Script" path="res://scenes/ui/main_menu/exit_button.gd" id="7_c6tg2"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_y1dat"]
@@ -94,11 +95,6 @@ text = "Start Game"
 script = ExtResource("4_scx45")
 scene_to_load = 1
 
-[node name="FullScreen" type="Button" parent="Control/MarginContainer/ButtonsContainer"]
-layout_mode = 2
-text = "Toggle Fullscreen"
-script = ExtResource("6_k0xn6")
-
 [node name="Exit" type="Button" parent="Control/MarginContainer/ButtonsContainer"]
 layout_mode = 2
 shortcut = SubResource("Shortcut_iu3rr")
@@ -109,7 +105,6 @@ script = ExtResource("7_c6tg2")
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
-alignment = 2
 
 [node name="Author" type="Label" parent="Control/MarginContainer/CreditsContainer"]
 layout_mode = 2
@@ -124,7 +119,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 32
 theme_override_font_sizes/font_size = 48
 button_mask = 7
-text = "Music adapted from PunchDeck"
+text = "Music by PunchDeck, used"
 uri = "https://punchdeck.bandcamp.com/"
 
 [node name="Music2" type="LinkButton" parent="Control/MarginContainer/CreditsContainer"]
@@ -143,5 +138,29 @@ theme_override_constants/outline_size = 32
 theme_override_font_sizes/font_size = 48
 text = "Font by datagoblin"
 uri = "https://datagoblin.itch.io/monogram"
+
+[node name="OptionsContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="Control/MarginContainer/OptionsContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 24
+text = "Options"
+
+[node name="FullScreen" type="Button" parent="Control/MarginContainer/OptionsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Toggle Fullscreen"
+script = ExtResource("6_k0xn6")
+
+[node name="ToggleSound" type="Button" parent="Control/MarginContainer/OptionsContainer"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 100
+theme_override_font_sizes/font_size = 64
+text = "Toggle music"
+script = ExtResource("7_5lo5m")
 
 [connection signal="pressed" from="Control/MarginContainer/ButtonsContainer/Exit" to="Control/MarginContainer/ButtonsContainer/Exit" method="_on_pressed"]

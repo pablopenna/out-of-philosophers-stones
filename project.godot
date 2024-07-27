@@ -20,8 +20,8 @@ config/icon="res://art/cover_small.png"
 
 GlobalEvents="*res://scenes/global_events.gd"
 AddToTreeUtils="*res://scenes/auto_loads/add_to_tree_utils.gd"
-GlobalMusicPlayer="*res://scenes/global_music_player.gd"
 SceneLoaderUtil="*res://scenes/auto_loads/scene_loader_util.gd"
+GlobalMusicPlayer="*res://scenes/global_music_player.gd"
 
 [debug]
 
