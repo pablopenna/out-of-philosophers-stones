@@ -1,0 +1,149 @@
+[gd_scene load_steps=12 format=3 uid="uid://dvv0o50flnpd8"]
+
+[ext_resource type="Theme" uid="uid://jfuat3dv2f8r" path="res://other_resources/oops_theme.tres" id="1_wqbpr"]
+[ext_resource type="Script" path="res://scenes/ui/main_menu/add_random_decorations.gd" id="2_2y1nu"]
+[ext_resource type="PackedScene" uid="uid://bv0gud85vx8it" path="res://scenes/ui/main_menu/floating_decoration.tscn" id="3_rxy7x"]
+[ext_resource type="Script" path="res://scenes/ui/main_menu/start_game_button.gd" id="4_nahdr"]
+[ext_resource type="PackedScene" uid="uid://cgr1cp3u4fqks" path="res://scenes/levels/game.tscn" id="5_tm2d0"]
+[ext_resource type="Script" path="res://scenes/ui/main_menu/toggle_fullscreen.gd" id="6_k0xn6"]
+[ext_resource type="Script" path="res://scenes/ui/main_menu/exit_button.gd" id="7_c6tg2"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_y1dat"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_xam7a"]
+events = [SubResource("InputEventKey_y1dat")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_uqdaw"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_iu3rr"]
+events = [SubResource("InputEventKey_uqdaw")]
+
+[node name="MainMenuUI" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_wqbpr")
+
+[node name="TextureRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Decorations" type="Container" parent="Control/MarginContainer"]
+layout_mode = 2
+script = ExtResource("2_2y1nu")
+number_of_decorations = 50
+decoration_scene = ExtResource("3_rxy7x")
+
+[node name="TitleContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Title" type="Label" parent="Control/MarginContainer/TitleContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 64
+theme_override_font_sizes/font_size = 164
+text = "Out Of Philosopher's Stones"
+uppercase = true
+
+[node name="Subtitle" type="Label" parent="Control/MarginContainer/TitleContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 64
+theme_override_font_sizes/font_size = 100
+text = "(but not out of options)"
+horizontal_alignment = 1
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_wqbpr")
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="StartGame" type="Button" parent="Control/MarginContainer/ButtonsContainer"]
+layout_mode = 2
+shortcut = SubResource("Shortcut_xam7a")
+text = "Start Game"
+script = ExtResource("4_nahdr")
+scene_to_load = ExtResource("5_tm2d0")
+
+[node name="FullScreen" type="Button" parent="Control/MarginContainer/ButtonsContainer"]
+layout_mode = 2
+text = "Toggle Fullscreen"
+script = ExtResource("6_k0xn6")
+
+[node name="Exit" type="Button" parent="Control/MarginContainer/ButtonsContainer"]
+layout_mode = 2
+shortcut = SubResource("Shortcut_iu3rr")
+text = "Exit"
+script = ExtResource("7_c6tg2")
+
+[node name="CreditsContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+alignment = 2
+
+[node name="Author" type="Label" parent="Control/MarginContainer/CreditsContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/font_size = 48
+text = "A game by pablopenna
+"
+
+[node name="Music" type="LinkButton" parent="Control/MarginContainer/CreditsContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/font_size = 48
+button_mask = 7
+text = "Music adapted from PunchDeck"
+uri = "https://punchdeck.bandcamp.com/"
+
+[node name="Music2" type="LinkButton" parent="Control/MarginContainer/CreditsContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/font_size = 48
+button_mask = 7
+text = "under CreativeCommons"
+uri = "https://creativecommons.org/licenses/by/3.0/"
+
+[node name="Font" type="LinkButton" parent="Control/MarginContainer/CreditsContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/font_size = 48
+text = "Font by datagoblin"
+uri = "https://datagoblin.itch.io/monogram"
+
+[connection signal="pressed" from="Control/MarginContainer/ButtonsContainer/StartGame" to="Control/MarginContainer/ButtonsContainer/StartGame" method="_on_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/ButtonsContainer/Exit" to="Control/MarginContainer/ButtonsContainer/Exit" method="_on_pressed"]

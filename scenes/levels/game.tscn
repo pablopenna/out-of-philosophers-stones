@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://cgr1cp3u4fqks"]
+
+[ext_resource type="PackedScene" uid="uid://dd37u1aoewtfa" path="res://scenes/game_state/game_state_manager.tscn" id="1_4cf3b"]
+[ext_resource type="PackedScene" uid="uid://bb1aihwwoqf1r" path="res://scenes/ui/in_game_ui/in_game_ui.tscn" id="1_7h547"]
+[ext_resource type="Script" path="res://scenes/game_state/in-game-timer.gd" id="3_0cpyb"]
+[ext_resource type="Script" path="res://scenes/camera.gd" id="4_54scb"]
+[ext_resource type="Texture2D" uid="uid://b565nqi88eb6f" path="res://art/background.png" id="5_dhgss"]
+[ext_resource type="PackedScene" uid="uid://dc7lx67er6l06" path="res://scenes/stage_barrier/barrier.tscn" id="6_gqfl0"]
+[ext_resource type="Script" path="res://scenes/destroy_anything_outside.gd" id="7_o2ks8"]
+[ext_resource type="PackedScene" uid="uid://p143u0yu7cua" path="res://scenes/player/player.tscn" id="8_w6byf"]
+[ext_resource type="PackedScene" uid="uid://desj31vcxej0a" path="res://scenes/alchemy_ingredient/base/alchemy_ingredient.tscn" id="9_nad5t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1glpr"]
+size = Vector2(1386, 789)
+
+[node name="Main" type="Node2D"]
+
+[node name="GameStateManager" parent="." instance=ExtResource("1_4cf3b")]
+
+[node name="InGameTimer" type="Timer" parent="."]
+autostart = true
+script = ExtResource("3_0cpyb")
+
+[node name="UI" parent="." instance=ExtResource("1_7h547")]
+
+[node name="ProjectileContainer" type="Node" parent="." groups=["ProjectileContainer"]]
+
+[node name="IngredientContainer" type="Node" parent="." groups=["IngredientContainer"]]
+
+[node name="MixContainer" type="Node" parent="." groups=["MixContainer"]]
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+zoom = Vector2(2, 2)
+script = ExtResource("4_54scb")
+target = NodePath("../Player")
+
+[node name="Background" type="ColorRect" parent="Camera2D"]
+z_index = -1
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+color = Color(0, 0, 0, 1)
+
+[node name="Floor" type="Sprite2D" parent="."]
+position = Vector2(683, 384)
+texture = ExtResource("5_dhgss")
+
+[node name="Barrier" parent="." instance=ExtResource("6_gqfl0")]
+
+[node name="DestroyAnythingOutside" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 92
+script = ExtResource("7_o2ks8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DestroyAnythingOutside"]
+position = Vector2(683, 384.5)
+shape = SubResource("RectangleShape2D_1glpr")
+
+[node name="Player" parent="." instance=ExtResource("8_w6byf")]
+position = Vector2(579, 316)
+
+[node name="Ingredient" parent="." instance=ExtResource("9_nad5t")]
+position = Vector2(557, 391)
+
+[node name="Ingredient2" parent="." instance=ExtResource("9_nad5t")]
+position = Vector2(580, 391)
+type = 1
+
+[node name="Ingredient3" parent="." instance=ExtResource("9_nad5t")]
+position = Vector2(604, 391)
+type = 2

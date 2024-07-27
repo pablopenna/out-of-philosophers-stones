@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bv0gud85vx8it"]
 
 [ext_resource type="Texture2D" uid="uid://es7bxu6grpjc" path="res://art/hand.png" id="1_o21sj"]
-[ext_resource type="Script" path="res://scenes/levels/main_menu/floating_decoration.gd" id="2_fwxuk"]
+[ext_resource type="Script" path="res://scenes/ui/main_menu/floating_decoration.gd" id="2_fwxuk"]
 [ext_resource type="Texture2D" uid="uid://dios16sab1e1w" path="res://art/bone.png" id="3_pq81t"]
 [ext_resource type="Texture2D" uid="uid://cp4hv08ewgh08" path="res://art/eye.png" id="4_jho8n"]
 

@@ -1,0 +1,107 @@
+[gd_scene load_steps=11 format=3 uid="uid://bdxwyie4plx0y"]
+
+[ext_resource type="Script" path="res://scenes/ui/game_over/game_over.gd" id="1_c5vnc"]
+[ext_resource type="Theme" uid="uid://jfuat3dv2f8r" path="res://other_resources/oops_theme.tres" id="1_cosxk"]
+[ext_resource type="Script" path="res://scenes/ui/game_over/score.gd" id="3_0nivb"]
+[ext_resource type="Script" path="res://scenes/ui/game_over/retry_button.gd" id="4_pgu5l"]
+[ext_resource type="Script" path="res://scenes/ui/game_over/main_menu_button.gd" id="5_chrq1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rwn3g"]
+bg_color = Color(0, 0, 0, 0.784314)
+
+[sub_resource type="InputEventKey" id="InputEventKey_55s2e"]
+device = -1
+keycode = 82
+unicode = 114
+
+[sub_resource type="Shortcut" id="Shortcut_64tyi"]
+events = [SubResource("InputEventKey_55s2e")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_wvaow"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_l01ls"]
+events = [SubResource("InputEventKey_wvaow")]
+
+[node name="GameOver" type="CanvasLayer"]
+layer = 2
+script = ExtResource("1_c5vnc")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_cosxk")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="Panel" type="Panel" parent="Control/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rwn3g")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="GameOverLabel" type="Label" parent="Control/MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 256
+text = "Game Over"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="Control/MarginContainer/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "Score:"
+
+[node name="Score" type="Label" parent="Control/MarginContainer/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "0"
+script = ExtResource("3_0nivb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Retry" type="Button" parent="Control/MarginContainer/Panel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+shortcut = SubResource("Shortcut_64tyi")
+text = "Retry (r)"
+script = ExtResource("4_pgu5l")
+
+[node name="MainMenu" type="Button" parent="Control/MarginContainer/Panel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+shortcut = SubResource("Shortcut_l01ls")
+text = "Main Menu (esc)"
+script = ExtResource("5_chrq1")
+
+[connection signal="set_score" from="." to="Control/MarginContainer/Panel/VBoxContainer/HBoxContainer/Score" method="_on_game_over_set_score"]
+[connection signal="pressed" from="Control/MarginContainer/Panel/VBoxContainer/VBoxContainer/Retry" to="Control/MarginContainer/Panel/VBoxContainer/VBoxContainer/Retry" method="_on_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/Panel/VBoxContainer/VBoxContainer/MainMenu" to="Control/MarginContainer/Panel/VBoxContainer/VBoxContainer/MainMenu" method="_on_pressed"]

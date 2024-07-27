@@ -11,7 +11,7 @@ func _ready() -> void:
 	GlobalEvents.shake_screen.connect(_start_screenshake)
 
 func _process(delta: float) -> void:
-	if target:
+	if target != null:
 		global_position = target.global_position
 	_process_screenshake(delta)
 

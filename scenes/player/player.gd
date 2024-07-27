@@ -9,6 +9,7 @@ const walk_speed: int = 100
 func _ready() -> void:
 	animation_player.play("Player/idle")
 	hp_manager.health_decreased.connect(_on_damaged)
+	hp_manager.health_zeroed.connect(_on_death)
 	ingredient_stash.ingredient_picked_up.connect(_on_ingredient_picked_up)
 
 func _physics_process(delta: float) -> void:
@@ -38,5 +39,9 @@ func _toss_ingredient(type: AlchemyIngredient.IngredientType) -> void:
 func _on_damaged(_new_health_amount: int, _previous_health_amount: int) -> void:
 	GlobalEvents.player_damaged.emit()
 	
+func _on_death() -> void:
+	GlobalEvents.player_dead.emit()
+	
 func _on_ingredient_picked_up(ingredient: AlchemyIngredient) -> void:
 	GlobalEvents.player_acquired_ingredient.emit(ingredient.type)
+	
