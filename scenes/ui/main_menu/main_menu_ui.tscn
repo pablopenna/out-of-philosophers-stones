@@ -153,14 +153,14 @@ text = "Options"
 [node name="FullScreen" type="Button" parent="Control/MarginContainer/OptionsContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
-text = "Toggle Fullscreen"
+text = "Toggle Fullscreen (t)"
 script = ExtResource("6_k0xn6")
 
 [node name="ToggleSound" type="Button" parent="Control/MarginContainer/OptionsContainer"]
 layout_mode = 2
 theme_override_constants/icon_max_width = 100
 theme_override_font_sizes/font_size = 64
-text = "Toggle music"
+text = "Toggle music (m)"
 script = ExtResource("7_5lo5m")
 
 [connection signal="pressed" from="Control/MarginContainer/ButtonsContainer/Exit" to="Control/MarginContainer/ButtonsContainer/Exit" method="_on_pressed"]

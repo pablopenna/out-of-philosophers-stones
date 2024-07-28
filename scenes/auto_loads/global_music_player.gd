@@ -30,4 +30,12 @@ func _set_track(trackName: Tracks) -> void:
 func play_track(trackName: Tracks) -> void:
 	_set_track(trackName)
 	play()
+
+# Key press handling
+func _input(event):
+	if event.is_action_pressed("toggle_music"):
+		if playing:
+			stop()
+		else:
+			play()
 	

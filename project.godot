@@ -18,10 +18,11 @@ config/icon="res://art/cover_small.png"
 
 [autoload]
 
-GlobalEvents="*res://scenes/global_events.gd"
+GlobalEvents="*res://scenes/auto_loads/global_events.gd"
 AddToTreeUtils="*res://scenes/auto_loads/add_to_tree_utils.gd"
 SceneLoaderUtil="*res://scenes/auto_loads/scene_loader_util.gd"
-GlobalMusicPlayer="*res://scenes/global_music_player.gd"
+GlobalMusicPlayer="*res://scenes/auto_loads/global_music_player.gd"
+FullScreenUtil="*res://scenes/auto_loads/full_screen_util.gd"
 
 [debug]
 
@@ -86,6 +87,16 @@ toss_bone={
 toss_eye={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":51,"key_label":0,"unicode":51,"echo":false,"script":null)
+]
+}
+toggle_music={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":77,"key_label":0,"unicode":109,"echo":false,"script":null)
+]
+}
+toggle_fullscreen={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":84,"key_label":0,"unicode":116,"echo":false,"script":null)
 ]
 }
 
