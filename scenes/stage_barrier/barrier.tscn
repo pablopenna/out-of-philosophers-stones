@@ -23,10 +23,10 @@ curve = SubResource("Curve2D_3f3hp")
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 position = Vector2(24, 24)
 
-[node name="Spawner" type="Node" parent="." node_paths=PackedStringArray("spawnLocation", "spawnTimer")]
+[node name="Spawner" type="Node" parent="." node_paths=PackedStringArray("spawnPath", "spawnTimer")]
 script = ExtResource("2_d0q51")
 enemyScene = ExtResource("3_e7iby")
-spawnLocation = NodePath("../Path2D/PathFollow2D")
+spawnPath = NodePath("../Path2D/PathFollow2D")
 spawnTimer = NodePath("../SpawnTimer")
 
 [node name="SpawnTimer" type="Timer" parent="."]

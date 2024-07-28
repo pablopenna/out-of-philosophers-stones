@@ -40,7 +40,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_dpagm"]
 radius = 16.0312
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("animation_player", "hp_manager", "ingredient_factory", "state_machine")]
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("animation_player", "hp_manager", "ingredient_factory", "state_machine", "shoot_cooldown_timer")]
 collision_layer = 4
 collision_mask = 0
 motion_mode = 1
@@ -50,6 +50,7 @@ animation_player = NodePath("AnimationPlayer")
 hp_manager = NodePath("HealthPointsManager")
 ingredient_factory = NodePath("IngredientFactory")
 state_machine = NodePath("StateMachine")
+shoot_cooldown_timer = NodePath("ShootCooldown")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 2.5)
@@ -67,6 +68,9 @@ libraries = {
 "Enemy": SubResource("AnimationLibrary_gwvat")
 }
 
+[node name="ShootCooldown" type="Timer" parent="."]
+autostart = true
+
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "managed_node")]
 script = ExtResource("3_orv0g")
 initial_state = NodePath("Shoot")
@@ -76,10 +80,7 @@ managed_node = NodePath("..")
 script = ExtResource("5_fgmeb")
 animation_player = NodePath("../../AnimationPlayer")
 pattern_shooter = NodePath("../../PatternShooter")
-timer = NodePath("Timer")
-
-[node name="Timer" type="Timer" parent="StateMachine/Shoot"]
-autostart = true
+timer = NodePath("../../ShootCooldown")
 
 [node name="Stunned" type="Node" parent="StateMachine" node_paths=PackedStringArray("animation_player")]
 script = ExtResource("6_44mu3")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bx6lwuyvn4jya"]
+
+[ext_resource type="Script" path="res://scenes/stage_barrier/difficulty_manager.gd" id="1_dks4b"]
+
+[node name="DifficultyManager" type="Node"]
+script = ExtResource("1_dks4b")
