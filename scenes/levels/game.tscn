@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cgr1cp3u4fqks"]
+[gd_scene load_steps=13 format=3 uid="uid://cgr1cp3u4fqks"]
 
 [ext_resource type="PackedScene" uid="uid://dd37u1aoewtfa" path="res://scenes/game_state/game_state_manager.tscn" id="1_4cf3b"]
 [ext_resource type="PackedScene" uid="uid://bb1aihwwoqf1r" path="res://scenes/ui/in_game_ui/in_game_ui.tscn" id="1_7h547"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://scenes/destroy_anything_outside.gd" id="7_o2ks8"]
 [ext_resource type="PackedScene" uid="uid://p143u0yu7cua" path="res://scenes/player/player.tscn" id="8_w6byf"]
 [ext_resource type="PackedScene" uid="uid://desj31vcxej0a" path="res://scenes/alchemy_ingredient/base/alchemy_ingredient.tscn" id="9_nad5t"]
+[ext_resource type="PackedScene" uid="uid://fhgk1c5aq827" path="res://scenes/gun/gun_from_mix/gun_from_mix.tscn" id="11_xkxjh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1glpr"]
 size = Vector2(1386, 789)
@@ -72,3 +73,7 @@ type = 1
 [node name="Ingredient3" parent="." instance=ExtResource("9_nad5t")]
 position = Vector2(604, 391)
 type = 2
+
+[node name="LoadShaderToPreventStutter" parent="." instance=ExtResource("11_xkxjh")]
+process_mode = 4
+position = Vector2(0, 6)
