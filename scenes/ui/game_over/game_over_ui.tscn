@@ -24,7 +24,6 @@ keycode = 4194305
 events = [SubResource("InputEventKey_wvaow")]
 
 [node name="GameOver" type="CanvasLayer"]
-layer = 2
 script = ExtResource("1_c5vnc")
 
 [node name="Control" type="Control" parent="."]

@@ -40,6 +40,7 @@ func _on_damaged(_new_health_amount: int, _previous_health_amount: int) -> void:
 	GlobalEvents.player_damaged.emit()
 	
 func _on_death() -> void:
+	call_deferred("queue_free")
 	GlobalEvents.player_dead.emit()
 	
 func _on_ingredient_picked_up(ingredient: AlchemyIngredient) -> void:

@@ -1,7 +1,77 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgr8tntdjx25n"]
+[gd_scene load_steps=16 format=3 uid="uid://dgr8tntdjx25n"]
 
 [ext_resource type="Script" path="res://scenes/loading_screen/loading_screen.gd" id="1_p1pxk"]
 [ext_resource type="Theme" uid="uid://jfuat3dv2f8r" path="res://other_resources/oops_theme.tres" id="1_q67ip"]
+[ext_resource type="Shader" path="res://shaders/redish.gdshader" id="3_mkkir"]
+[ext_resource type="Texture2D" uid="uid://cxi8pgib15grg" path="res://art/flask.png" id="4_6kcc6"]
+[ext_resource type="Script" path="res://scenes/loading_screen/animate_sprite.gd" id="5_ddjt8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1hyr6"]
+shader = ExtResource("3_mkkir")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubikj"]
+atlas = ExtResource("4_6kcc6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6crgy"]
+atlas = ExtResource("4_6kcc6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_he4ep"]
+atlas = ExtResource("4_6kcc6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oa5gv"]
+atlas = ExtResource("4_6kcc6")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ja2aw"]
+atlas = ExtResource("4_6kcc6")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fa33k"]
+atlas = ExtResource("4_6kcc6")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8mup"]
+atlas = ExtResource("4_6kcc6")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84lt1"]
+atlas = ExtResource("4_6kcc6")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hb8br"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubikj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6crgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_he4ep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oa5gv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ja2aw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fa33k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8mup")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84lt1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="LoadingScreen" type="CanvasLayer"]
 script = ExtResource("1_p1pxk")
@@ -24,17 +94,24 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="Control"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 14
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -37.5
-offset_top = -13.0
-offset_right = 37.5
-offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/HBoxContainer"]
+layout_mode = 2
 text = "Loading..."
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/HBoxContainer"]
+material = SubResource("ShaderMaterial_1hyr6")
+position = Vector2(1114, 19.5)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_hb8br")
+frame_progress = 0.448154
+script = ExtResource("5_ddjt8")
