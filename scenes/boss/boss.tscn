@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=3 uid="uid://ibigjltoaqke"]
+
+[ext_resource type="Script" path="res://scenes/boss/boss.gd" id="1_ug4gr"]
+[ext_resource type="Texture2D" uid="uid://dcklwuh7bw8ra" path="res://art/boss_placeholder.png" id="2_kaysd"]
+[ext_resource type="PackedScene" uid="uid://bvhpvjcuqvn16" path="res://scenes/hurtbox/hurtbox.tscn" id="7_ijbps"]
+[ext_resource type="PackedScene" uid="uid://bivwencvg08tj" path="res://scenes/hp_manager/health_points_manager.tscn" id="8_qyb1y"]
+[ext_resource type="PackedScene" uid="uid://b8yls0byl10aq" path="res://scenes/projectile/projectile_shooter.tscn" id="9_blec0"]
+[ext_resource type="PackedScene" uid="uid://cxvxquh343piv" path="res://scenes/projectile/enemy_projectile.tscn" id="10_uo22p"]
+[ext_resource type="PackedScene" uid="uid://cegd3hhiafncc" path="res://scenes/alchemy_ingredient/factory/ingredient_factory.tscn" id="12_lbolr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nhs8a"]
+size = Vector2(92, 88)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dpagm"]
+radius = 50.0
+
+[node name="Boss" type="CharacterBody2D" node_paths=PackedStringArray("hp_manager", "ingredient_factory", "shoot_cooldown_timer", "projectile_shooter")]
+collision_layer = 4
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_ug4gr")
+hp_manager = NodePath("HealthPointsManager")
+ingredient_factory = NodePath("IngredientFactory")
+shoot_cooldown_timer = NodePath("ShootCooldown")
+projectile_shooter = NodePath("ProjectileShooter")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, -2)
+shape = SubResource("RectangleShape2D_nhs8a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_kaysd")
+
+[node name="ShootCooldown" type="Timer" parent="."]
+autostart = true
+
+[node name="Hurtbox" parent="." instance=ExtResource("7_ijbps")]
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-5, -4)
+shape = SubResource("CircleShape2D_dpagm")
+
+[node name="HealthPointsManager" parent="." node_paths=PackedStringArray("hurtbox") instance=ExtResource("8_qyb1y")]
+hurtbox = NodePath("../Hurtbox")
+health = 200
+
+[node name="ProjectileShooter" parent="." instance=ExtResource("9_blec0")]
+projectileScene = ExtResource("10_uo22p")
+projectile_scanned_layer = 32
+projectile_layer = 64
+
+[node name="IngredientFactory" parent="." instance=ExtResource("12_lbolr")]

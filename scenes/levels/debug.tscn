@@ -1,16 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://csp7ltjwkhch3"]
+[gd_scene load_steps=5 format=3 uid="uid://csp7ltjwkhch3"]
 
 [ext_resource type="PackedScene" uid="uid://p143u0yu7cua" path="res://scenes/player/player.tscn" id="1_cpxr0"]
-[ext_resource type="PackedScene" uid="uid://ca6023cmew22i" path="res://scenes/enemy/enemy.tscn" id="2_28fb5"]
 [ext_resource type="PackedScene" uid="uid://desj31vcxej0a" path="res://scenes/alchemy_ingredient/base/alchemy_ingredient.tscn" id="3_3sw03"]
+[ext_resource type="PackedScene" uid="uid://dc7lx67er6l06" path="res://scenes/stage_barrier/barrier.tscn" id="4_n7jx4"]
+[ext_resource type="PackedScene" uid="uid://ibigjltoaqke" path="res://scenes/boss/boss.tscn" id="5_ybt1v"]
 
 [node name="Debug" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_cpxr0")]
 position = Vector2(210, 120)
-
-[node name="Enemy" parent="." instance=ExtResource("2_28fb5")]
-position = Vector2(376, 118)
 
 [node name="Ingredient" parent="." instance=ExtResource("3_3sw03")]
 position = Vector2(139, 180)
@@ -33,3 +31,10 @@ type = 2
 [node name="Ingredient6" parent="." instance=ExtResource("3_3sw03")]
 position = Vector2(281, 174)
 type = 2
+
+[node name="Barrier" parent="." instance=ExtResource("4_n7jx4")]
+process_mode = 4
+
+[node name="Boss" parent="." node_paths=PackedStringArray("target") instance=ExtResource("5_ybt1v")]
+position = Vector2(461, 297)
+target = NodePath("../Player")
