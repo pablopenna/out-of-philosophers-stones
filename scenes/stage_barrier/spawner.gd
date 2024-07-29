@@ -1,27 +1,54 @@
 extends Node
 
+@export var bossScene: PackedScene
 @export var enemyScene: PackedScene
 @export var spawnPath: PathFollow2D
 @export var spawnTimer: Timer
+@export var spawnBossAtScore: int = 500
+@export var target: Node2D
+@export var bossSpawnPoint: Node2D
 
 var _game_score: int
 var _difficulty_params: Dictionary
+var _has_boss_been_spawned: bool
+var _is_boss_dead: bool
 
 func _ready() -> void:
 	spawnTimer.timeout.connect(_spawn)
 	GlobalEvents.score_updated.connect(_update_score)
+	_has_boss_been_spawned = false
+	_is_boss_dead = false
 
 func _spawn() -> void:
+	if _can_spawn_boss():
+		_spawn_boss()
+	if _has_boss_been_spawned and not _is_boss_dead:
+		return
+	_spawn_regular_enemy()
+
+func _spawn_regular_enemy() -> void:
 	var enemy: Enemy = enemyScene.instantiate() as Enemy
-	
 	enemy.position = _get_random_spawn_position()
 	enemy.direction = _get_random_enemy_direction()
 	enemy.move_speed = _get_enemy_speed()
 	enemy.bullets_shot = _get_enemy_bullets_shot()
 	enemy.shoot_cooldown = _get_enemy_shoot_cooldown()
-	
 	add_child(enemy)
+
+func _spawn_boss() -> void:
+	var boss: Boss = bossScene.instantiate() as Boss
+	boss.target = target
+	boss.global_position = bossSpawnPoint.global_position
+	boss.died.connect(_on_boss_dead)
+	_has_boss_been_spawned = true
+	add_child(boss)
 	
+func _can_spawn_boss() -> bool:
+	return not _has_boss_been_spawned and _game_score >= spawnBossAtScore
+
+func _on_boss_dead() -> void:
+	_is_boss_dead = true
+
 func _get_random_spawn_position() -> Vector2:
 	# Get random location in the path defined by the Path2D which is parent of PathFollow2D
 	spawnPath.progress_ratio = randf()

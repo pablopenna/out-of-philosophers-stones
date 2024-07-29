@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dc7lx67er6l06"]
+[gd_scene load_steps=6 format=3 uid="uid://dc7lx67er6l06"]
 
 [ext_resource type="TileSet" uid="uid://cg0oc306x4rrx" path="res://scenes/stage_barrier/barrier_tileset.tres" id="1_prxti"]
 [ext_resource type="Script" path="res://scenes/stage_barrier/spawner.gd" id="2_d0q51"]
 [ext_resource type="PackedScene" uid="uid://ca6023cmew22i" path="res://scenes/enemy/enemy.tscn" id="3_e7iby"]
+[ext_resource type="PackedScene" uid="uid://ibigjltoaqke" path="res://scenes/boss/boss.tscn" id="3_jibyi"]
 
 [sub_resource type="Curve2D" id="Curve2D_3f3hp"]
 _data = {
@@ -10,7 +11,13 @@ _data = {
 }
 point_count = 5
 
-[node name="Barrier" type="Node"]
+[node name="SpawnerBarrier" type="Node" node_paths=PackedStringArray("spawnPath", "spawnTimer", "bossSpawnPoint")]
+script = ExtResource("2_d0q51")
+bossScene = ExtResource("3_jibyi")
+enemyScene = ExtResource("3_e7iby")
+spawnPath = NodePath("Path2D/PathFollow2D")
+spawnTimer = NodePath("SpawnTimer")
+bossSpawnPoint = NodePath("BossSpawnPoint")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_prxti")
@@ -23,11 +30,8 @@ curve = SubResource("Curve2D_3f3hp")
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 position = Vector2(24, 24)
 
-[node name="Spawner" type="Node" parent="." node_paths=PackedStringArray("spawnPath", "spawnTimer")]
-script = ExtResource("2_d0q51")
-enemyScene = ExtResource("3_e7iby")
-spawnPath = NodePath("../Path2D/PathFollow2D")
-spawnTimer = NodePath("../SpawnTimer")
-
 [node name="SpawnTimer" type="Timer" parent="."]
 autostart = true
+
+[node name="BossSpawnPoint" type="Node2D" parent="."]
+position = Vector2(1095, 196)

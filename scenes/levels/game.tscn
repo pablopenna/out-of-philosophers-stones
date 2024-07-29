@@ -49,7 +49,8 @@ color = Color(0, 0, 0, 1)
 position = Vector2(683, 384)
 texture = ExtResource("5_dhgss")
 
-[node name="Barrier" parent="." instance=ExtResource("6_gqfl0")]
+[node name="Barrier" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_gqfl0")]
+target = NodePath("../Player")
 
 [node name="DestroyAnythingOutside" type="Area2D" parent="."]
 collision_layer = 0
