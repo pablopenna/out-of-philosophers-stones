@@ -17,6 +17,7 @@ signal died
 
 func _ready() -> void:
 	sound_player.play()
+	GlobalEvents.shake_screen.emit(300)
 	hp_manager.health_zeroed.connect(_on_died)
 	change_shoot_pattern_timer.timeout.connect(_change_shoot_pattern)
 	direction = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)).normalized()
