@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bb1aihwwoqf1r"]
+[gd_scene load_steps=11 format=3 uid="uid://bb1aihwwoqf1r"]
 
 [ext_resource type="LabelSettings" uid="uid://db1a0y17bcjrj" path="res://scenes/ui/in_game_ui/score/score_label_settings.tres" id="1_4044v"]
 [ext_resource type="Script" path="res://scenes/ui/in_game_ui/score/show_score.gd" id="2_wv4wc"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scenes/ui/in_game_ui/ingredients/ingredient_counter.gd" id="7_flyxk"]
 [ext_resource type="Texture2D" uid="uid://dios16sab1e1w" path="res://art/bone.png" id="8_x3n8b"]
 [ext_resource type="Texture2D" uid="uid://cp4hv08ewgh08" path="res://art/eye.png" id="9_57cev"]
+[ext_resource type="PackedScene" uid="uid://vdm3e8obbmkd" path="res://scenes/ui/cursor.tscn" id="10_mrlad"]
 
 [node name="UI" type="CanvasLayer"]
 
@@ -132,3 +133,5 @@ horizontal_alignment = 1
 vertical_alignment = 2
 script = ExtResource("7_flyxk")
 tracked_ingredient_type = 1
+
+[node name="Cursor" parent="." instance=ExtResource("10_mrlad")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dvv0o50flnpd8"]
+[gd_scene load_steps=13 format=3 uid="uid://dvv0o50flnpd8"]
 
 [ext_resource type="Theme" uid="uid://jfuat3dv2f8r" path="res://other_resources/oops_theme.tres" id="1_wqbpr"]
 [ext_resource type="Script" path="res://scenes/ui/main_menu/add_random_decorations.gd" id="2_2y1nu"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scenes/ui/main_menu/toggle_fullscreen.gd" id="6_k0xn6"]
 [ext_resource type="Script" path="res://scenes/ui/main_menu/mute_sound.gd" id="7_5lo5m"]
 [ext_resource type="Script" path="res://scenes/ui/main_menu/exit_button.gd" id="7_c6tg2"]
+[ext_resource type="PackedScene" uid="uid://vdm3e8obbmkd" path="res://scenes/ui/cursor.tscn" id="8_6ywm7"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_y1dat"]
 device = -1
@@ -162,5 +163,7 @@ theme_override_constants/icon_max_width = 100
 theme_override_font_sizes/font_size = 64
 text = "Toggle music (m)"
 script = ExtResource("7_5lo5m")
+
+[node name="Cursor" parent="." instance=ExtResource("8_6ywm7")]
 
 [connection signal="pressed" from="Control/MarginContainer/ButtonsContainer/Exit" to="Control/MarginContainer/ButtonsContainer/Exit" method="_on_pressed"]
