@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://cxvxquh343piv"]
+[gd_scene load_steps=14 format=3 uid="uid://cxvxquh343piv"]
 
 [ext_resource type="Script" path="res://scenes/projectile/projectile.gd" id="1_tghha"]
 [ext_resource type="Texture2D" uid="uid://dwi8xrfirr88p" path="res://art/bullet2.png" id="2_56x0i"]
+[ext_resource type="Script" path="res://scenes/projectile/animate_sprite.gd" id="3_eox3f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7gqcl"]
 atlas = ExtResource("2_56x0i")
@@ -79,6 +80,7 @@ script = ExtResource("1_tghha")
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_7f6ge")
 frame_progress = 0.317966
+script = ExtResource("3_eox3f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_wiad0")
